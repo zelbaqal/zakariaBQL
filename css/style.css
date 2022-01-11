@@ -1,0 +1,203 @@
+/* CSS variables */
+@import url('./partials/_variables.css');
+
+/* Global css */
+@import url('./partials/_global.css');
+
+/* Start Navigation */
+.header_area .main_menu .navbar .navbar-brand {
+	padding: 0 2rem 0 5rem;
+}
+.header_area .main_menu .navbar {
+	padding: 1rem 20rem;
+}
+.header_area .main_menu .nav-item .nav-link {
+	font: normal 500 15px/2px var(--montessrat);
+	text-transform: uppercase;
+	padding: 1.7rem;
+	color: var(--title-color);
+}
+.header_area .main_menu .navbar-nav .active a {
+	background: var(--gradient-color);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+.header_area .main_menu .navbar-nav a:hover {
+	background: var(--gradient-color);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+/* End Navigation */
+
+/* Start Banner Area */
+.site-main .site-banner .site-title h3 {
+	padding-top: 20%;
+	font-weight: 500;
+}
+.site-main .site-banner .site-title h3::after {
+	content: '';
+	height: 2px;
+	width: 25vw;
+	background: black;
+	display: inline-block;
+	margin-left: 5%;
+	transform: translateY(-5px);
+	animation: openingLine 3s linear;
+}
+
+@keyframes openingLine {
+	50% {
+		width: 25vw;
+	}
+
+	0% {
+		width: 0vw;
+	}
+}
+
+.site-main .site-banner .site-title h1 {
+	font: normal bold 52px/60px var(--montessrat);
+	font-weight: 600;
+	letter-spacing: 0.1rem;
+}
+.site-main .site-banner .site-title h4 {
+	font-size: 1.2rem;
+}
+.site-main .site-banner .banner-img > .img-fluid {
+	padding: 5rem 0;
+	width: 90rem;
+}
+
+.site-main .site-banner .banner-img > .img-setting-2 {
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	/* -webkit-transition: -webkit-transform 1s; */
+
+	animation: spin 5s linear infinite;
+}
+@-webkit-keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		top: 10%;
+	}
+	50% {
+		top: 25%;
+	}
+}
+
+.site-main .site-banner .banner-img > .img-setting-1 {
+	position: absolute;
+	top: 5%;
+	left: 10%;
+	/* -webkit-transition: -webkit-transform 1s; */
+
+	animation: spin2 5s linear infinite;
+}
+
+@-webkit-keyframes spin2 {
+	100% {
+		-webkit-transform: rotate(-360deg);
+		top: 5%;
+	}
+	50% {
+		top: 10%;
+	}
+}
+
+/* .img-setting-1:hover {
+	-webkit-transform: rotate(360deg) translateZ(0);
+} */
+
+/* End Banner Area */
+/* Start About Section */
+.site-main .about-area {
+	padding: 5rem 5rem;
+}
+
+.site-main .about-area .about-image {
+	padding: 7rem 0;
+}
+
+.site-main .about-area .about-title h2 > span {
+	display: block;
+	font: normal bold 49px/60px var(--montessrat);
+	letter-spacing: 1rem;
+}
+
+.site-main .about-area .about-title .paragraph > p {
+	padding: 0.4rem 0;
+}
+/* End About Section  */
+/* Start Brand area */
+.site-main .brand-area {
+	padding: 5rem 15rem;
+}
+
+.site-main .brand-area .first-row > .col-lg-4 {
+	display: flex;
+	justify-content: center;
+}
+
+.site-main .brand-area .first-row > .col-lg-4 > .single-brand {
+	text-align: center;
+	padding: 0.5rem 0;
+	margin: 0.3rem 0;
+	width: 180px;
+	height: 100px;
+	cursor: pointer;
+	transition: transform 0.4s ease;
+}
+.site-main .brand-area .first-row > .col-lg-4 > .single-brand > img {
+	/* border: 1px solid var(--border-color); */
+	border-radius: 10px;
+}
+.site-main .brand-area .first-row > .col-lg-4 > .single-brand:hover > img {
+	box-shadow: var(--box-shadow);
+	transform: scale(1.1);
+}
+
+.site-main .brand-area .experience-area {
+	padding-left: 1rem;
+}
+.site-main .brand-area .experience-logo {
+	background: url('../img/brands/spring.png') no-repeat 55% 70%; /*-20px -10px*/
+}
+
+.site-main .brand-area .experience-area span {
+	display: block;
+}
+
+/* End Brand Area */
+
+/* Tablette */
+@media screen and (max-width: 1570px) {
+	.header_area .main_menu .navbar .navbar-brand {
+		padding: 0 2rem 0 0rem;
+	}
+	.header_area .main_menu .navbar {
+		padding: 1rem 1rem;
+	}
+}
+
+/* Smart phone */
+@media screen and (max-width: 600px) {
+	.header_area .main_menu .navbar .navbar-brand {
+		padding: 0 2rem 0 0rem;
+	}
+	.header_area .main_menu .navbar {
+		padding: 1rem 1rem;
+	}
+	.site-main .site-banner .site-title h3::after {
+		content: '';
+		height: 2px;
+		width: 50vw;
+		background: black;
+		display: inline-block;
+		margin-left: 5%;
+		transform: translateY(-5px);
+		animation: openingLine 3s linear;
+	}
+}

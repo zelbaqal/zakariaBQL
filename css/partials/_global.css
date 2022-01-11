@@ -1,0 +1,67 @@
+html,
+body {
+	margin: 0%;
+	padding: 0%;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	font-family: var(--montessrat);
+}
+
+.title-text {
+	font: normal bold 50px/72px var(--montessrat);
+}
+
+.title-uppercase {
+	text-transform: uppercase;
+}
+
+/* Buttons style */
+.button {
+	padding: 0.8rem 2.2rem;
+	font: normal bold 16px/20px var(--montessrat);
+	position: relative;
+	border: 3px solid transparent;
+	border-radius: 4px;
+}
+.button.primary-button {
+	background: var(--gradient-color);
+	background-clip: padding-box;
+	color: whitesmoke;
+	transition: background.6s ease;
+	box-shadow: var(--box-shadow);
+}
+.button.primary-button:hover {
+	background: whitesmoke;
+	background-clip: padding-box;
+	color: black;
+}
+
+.button.primary-button:after,
+.button.secondary-button:after {
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	bottom: -2px;
+	right: -2px;
+	background: var(--gradient-color);
+	content: '';
+	z-index: -1;
+}
+
+.button.secondary-button {
+	background: white;
+	background-clip: padding-box;
+	transition: background.6s ease;
+}
+.button.secondary-button:hover {
+	background: var(--gradient-color);
+	color: whitesmoke;
+	background-clip: padding-box;
+	box-shadow: var(--box-shadow);
+}
+
+p.para {
+	color: var(--text-color);
+	font: normal 500 16px/25px var(--montessrat);
+}
