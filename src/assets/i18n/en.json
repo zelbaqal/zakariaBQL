@@ -1,0 +1,15 @@
+{
+    "NAVIGATION":{
+        "Home":"Home",
+        "About":"About-Me",
+        "Experience":"Experiences",
+        "Projects":"Projects",
+        "Contact":"Contact-Me",
+        "language":"En",
+        "fr":"Frensh",
+        "en":"English"
+    },
+     "BUTTONS":{
+        "cvButton":"Donwnload my resume"
+    }
+}

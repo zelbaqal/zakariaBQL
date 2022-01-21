@@ -8,6 +8,10 @@
 .header_area .main_menu .navbar .navbar-brand {
 	padding: 0 2rem 0 5rem;
 }
+.header_area .main_menu .navbar .navbar-brand > img {
+	width: 30px;
+	opacity: .8;
+}
 .header_area .main_menu .navbar {
 	padding: 1rem 20rem;
 }
@@ -112,6 +116,25 @@
 } */
 
 /* End Banner Area */
+
+/* Start collaborators */
+.collaborators .card{
+	border: 0px transparent;
+}
+.collaborators .fab,.fas{
+	font-size: 4em;
+	background: var(--gradient-color);
+    -webkit-background-clip: text;
+	background-clip: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.collaborators .fab:hover, .fas:hover{
+	cursor: pointer;
+	transform: scale(1.8);
+}
+/* End collaborators */
+
 /* Start About Section */
 .site-main .about-area {
 	padding: 5rem 5rem;

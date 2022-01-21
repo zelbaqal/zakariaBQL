@@ -1,0 +1,45 @@
+.img-fluid {
+	padding: 5rem 0;
+	width: 90rem;
+}
+
+.img-setting-2 {
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	/* -webkit-transition: -webkit-transform 1s; */
+
+	animation: spin 5s linear infinite;
+}
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		top: 10%;
+	}
+	50% {
+		top: 25%;
+	}
+}
+
+.img-setting-1 {
+	position: absolute;
+	top: 5%;
+	left: 10%;
+	/* -webkit-transition: -webkit-transform 1s; */
+
+	animation: spin2 5s linear infinite;
+}
+
+@keyframes spin2 {
+	100% {
+		-webkit-transform: rotate(-360deg);
+		top: 5%;
+	}
+	50% {
+		top: 10%;
+	}
+}
+
+/* .img-setting-1:hover {
+	-webkit-transform: rotate(360deg) translateZ(0);
+} */

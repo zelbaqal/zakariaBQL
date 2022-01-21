@@ -1,0 +1,18 @@
+/* Start collaborators */
+.collaborators .card{
+	border: 0px transparent;
+	background: transparent;
+}
+.collaborators svg{
+	font-size: 4em;
+	background: var(--gradient-color);
+    -webkit-background-clip: text;
+	background-clip: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.collaborators svg:hover{
+	cursor: pointer;
+	transform: scale(1.8);
+}
+/* End collaborators */

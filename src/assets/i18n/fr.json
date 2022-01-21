@@ -1,0 +1,16 @@
+{
+    "NAVIGATION":{
+        "Home":"Acceuil",
+        "About":"A propos de moi",
+        "Experience":"Expériences",
+        "Projects":"Projets",
+        "Contact":"Contacter-Moi",
+        "language":"Fr",
+        "fr":"Français",
+        "en":"Anglais"
+    },
+    "BUTTONS":{
+        "cvButton":"Télécharger mon CV"
+    }
+   
+}

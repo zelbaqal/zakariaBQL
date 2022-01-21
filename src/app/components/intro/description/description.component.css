@@ -1,0 +1,31 @@
+h3 {
+	padding-top: 20%;
+	font-weight: 500;
+}
+h3::after {
+	content: '';
+	height: 2px;
+	width: 16vw;
+	background: black;
+	display: inline-block;
+	margin-left: 5%;
+	transform: translateY(-5px);
+	animation: openingLine 3s linear;
+}
+@keyframes openingLine {
+	50% {
+		width: 16vw;
+	}
+
+	0% {
+		width: 0vw;
+	}
+}
+h1 {
+	font: normal bold 45px/60px var(--montessrat);
+	font-weight: 600;
+	letter-spacing: 0.1rem;
+}
+h4 {
+	font-size: 1.2rem;
+}

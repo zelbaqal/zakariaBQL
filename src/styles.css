@@ -1,0 +1,15 @@
+
+
+/* CSS variables */
+@import url('./assets/css/partials/_variables.css');
+
+/* Global css */
+@import url('./assets/css/partials/_global.css');
+
+html, body{
+    /* background-color: #0c0456 ; Green */
+    /* color: white; */
+   
+    max-width: 100%;
+    overflow-x: hidden;
+}
