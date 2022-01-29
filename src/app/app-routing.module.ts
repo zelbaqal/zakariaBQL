@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutMeComponent } from './components/about-me/global/about-me.component';
+import { GlobalExperienceComponent } from './components/experience/global-experience/global-experience.component';
 
 import { IntroComponent } from './components/intro/intro.component';
+
 
 const routes: Routes = [
   
   { path : "home", component : IntroComponent},
-  { path : "about", component : AboutMeComponent},
+  { path : "about", loadChildren: ()=> import('./components/about-me/about-me.module').then(mod => mod.AboutMeModule)},
+  { path : "experience", component : GlobalExperienceComponent},
+
    { path : "**", redirectTo : "home"},
 ];
 

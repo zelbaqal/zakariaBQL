@@ -1,0 +1,49 @@
+/* body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;  
+} */
+
+.button.save-button{
+	background: var(--gradient-edit-color);
+	background-clip: padding-box;
+	color: whitesmoke;
+	transition: background.6s ease;
+	box-shadow: var(--box-shadow);
+}
+.button.save-button:after{
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	bottom: -2px;
+	right: -2px;
+	background: var(--gradient-edit-color);
+	content: '';
+	z-index: -1;
+}
+
+.button.cancel-button{
+	background: var(--gradient-cancel-color);
+	background-clip: padding-box;
+	color: whitesmoke;
+	transition: background.6s ease;
+	box-shadow: var(--box-shadow);
+}
+.button.cancel-button:after{
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	bottom: -2px;
+	right: -2px;
+	background: var(--gradient-cancel-color);
+	content: '';
+	z-index: -1;
+}
+
+/* .button.save-button:hover {
+	background: rgb(190, 187, 187);
+	background-clip: padding-box;
+	color: black;
+} */
+

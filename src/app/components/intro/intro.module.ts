@@ -5,8 +5,8 @@ import { DescriptionComponent } from './description/description.component';
 import { IntroComponent } from './intro.component';
 import { ColaboratorComponent } from '../colaborators/colaborator/colaborator.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LanguageService } from 'src/app/services/language/language.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgbDatepickerModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -16,11 +16,14 @@ import { TranslateModule } from '@ngx-translate/core';
     ColaboratorComponent,
     DescriptionComponent,
     CreativeLogoComponent,
+    
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    TranslateModule
+    TranslateModule,
+    NgbModalModule,
+    NgbDatepickerModule
   ]
 })
 export class IntroModule { }

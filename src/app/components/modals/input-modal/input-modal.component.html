@@ -1,0 +1,20 @@
+<div class="row" [formGroup]="infoGeneralForm">
+    <div class="col-md-2">
+        <div class="form-group">
+            <label class="mt-2">{{ 'InputTitles' | propertyExtractor : inputConfig.inputTitle | translate }}</label>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="form-group">
+            <input tabindex="-1" type="text" class="form-control" [placeholder]="inputConfig.inputPlaceHolder.fr"
+                formControlName="fieldFR" (blur)="onTouched()">
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="form-group">
+            <input tabindex="-1" type="text" class="form-control" [placeholder]="inputConfig.inputPlaceHolder.en"
+                formControlName="fieldEN" (blur)="onTouched()">
+        </div>
+    </div>
+</div>
+<hr>

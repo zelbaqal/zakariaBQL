@@ -10,7 +10,13 @@
         "en":"Anglais"
     },
     "BUTTONS":{
+        "editButton":"éditer profil",
         "cvButton":"Télécharger mon CV"
+    },
+    "InputTitles":{
+        "salutation":"Salutation",
+        "presentation":"Présentation",
+        "jobDescription":"Fonction"
     }
    
 }

@@ -5,6 +5,9 @@ import { InfoProfilComponent } from "./info-profil/info-profil.component";
 import { LinksComponent } from "./links/links.component";
 import { ProfilComponent } from "./profil/profil.component";
 import { ProgressBarComponent } from "./progress-bar/progress-bar.component";
+import { CompetenceComponent } from './competence/competence.component';
+import { AboutMeRoutingModule } from "./about-me.routing";
+import { ParagrapheLength } from "src/app/pipes/property-extractor.pipe";
 
 @NgModule({
   declarations: [
@@ -13,10 +16,12 @@ import { ProgressBarComponent } from "./progress-bar/progress-bar.component";
     ProfilComponent,
     InfoProfilComponent,
     ProgressBarComponent,
+    CompetenceComponent,
+    ParagrapheLength
   ],
   imports: [
     CommonModule,
-    
+    AboutMeRoutingModule
   ]
 })
 export class AboutMeModule { }

@@ -10,7 +10,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { PropertyExtractorPipe } from './pipes/property-extractor.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IntroModule } from './components/intro/intro.module';
-import { AboutMeModule } from './components/about-me/about-me.module';
+import { ExperienceModule } from './components/experience/experience.module';
+import { InfoModalComponent } from './components/modals/info-modal/info-modal.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { InputModalComponent } from './components/modals/input-modal/input-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
 
 
 
@@ -26,6 +33,11 @@ export function createTranslateLoader(httpClient : HttpClient){
     AppComponent,
     HeaderComponent,
     PropertyExtractorPipe,
+    InfoModalComponent,
+    InputModalComponent,
+    
+    
+   
     
   
   ],
@@ -33,6 +45,8 @@ export function createTranslateLoader(httpClient : HttpClient){
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader : {
         provide : TranslateLoader,
@@ -42,7 +56,9 @@ export function createTranslateLoader(httpClient : HttpClient){
     }),
     BrowserAnimationsModule,
     IntroModule,
-    AboutMeModule
+    ExperienceModule,
+    NgxFileDropModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,37 @@
+<h3 class="p-3">Informations générales</h3>
+<div class="breadcrumb"></div>
+<div class="container">
+    <form [formGroup]="myForm" (ngSubmit)="submitClicked()">
+        <input-modal *ngFor="let inputConfig of inputsConfig" [inputConfig]="inputConfig"
+            [formControlName]="inputConfig.inputTitle">
+        </input-modal>
+
+
+        <div class="row ">
+            <div class="col-10 offset-1">
+                <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                        {{ getFileName() }}
+                        <!-- <button class="button" type="button" (click)="openFileSelector()">Browse Files</button> -->
+                    </ng-template>
+                </ngx-file-drop>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="w-100 btn button save-button text-uppercase">
+                    {{ "BUTTONS.cvButton" | translate }}
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="w-100 btn button cancel-button text-uppercase">
+                    {{ "BUTTONS.cvButton" | translate }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="breadcrumb mb-0 mt-3"></div>
+<pre>Value {{ myForm.value | json }}</pre>

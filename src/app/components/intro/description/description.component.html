@@ -2,10 +2,12 @@
 <h1 class="title-text ">Je m'appelle Zakaria,</h1>
 <h4 class="title-text ">Je suis un développeur Full Stack Java et Javascript.</h4>
 <div class="site-buttons">
+
     <div class="d-flex flex-row flew-wrap">
-        <button type="button" class=" ml-auto btn button primary-button mr-4 text-uppercase">
+        <button *ngIf="isAdmin" type="button" class="btn button edit-button text-uppercase" (click)="open()">
+            {{ "BUTTONS.editButton" | translate }}
+        </button>
+        <button type="button" class="ml-auto mr-5 btn button primary-button text-uppercase">
             {{ "BUTTONS.cvButton" | translate }}
         </button>
-
     </div>
-</div>

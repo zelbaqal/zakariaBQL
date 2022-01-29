@@ -10,6 +10,12 @@
         "en":"English"
     },
      "BUTTONS":{
+        "editButton":"edit profil",
         "cvButton":"Donwnload my resume"
+    },
+     "InputTitles":{
+        "salutation":"hellos",
+        "presentation":"Presentation",
+        "jobDescription":"Job"
     }
 }

@@ -12,4 +12,7 @@ html, body{
    
     max-width: 100%;
     overflow-x: hidden;
+    font-family: var(--montessrat);
 }
+html, body { height: 100%; }
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
