@@ -6,6 +6,7 @@ import { User } from 'src/app/models/user.model';
 import { OutPutService } from 'src/app/services/divers/out-put.service';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { UserService } from 'src/app/services/userServices/user.service';
+import { CardModalComponent } from '../../modals/card-modal/card-modal.component';
 import { InfoModalComponent } from '../../modals/info-modal/info-modal.component';
 
 
@@ -53,44 +54,19 @@ export class DescriptionComponent implements OnInit, OnDestroy {
 
 
   openInfoModal() {
-    
-    const config: NgbModalOptions = { size : 'xl',};
-    
+    const config: NgbModalOptions = { size : 'xl',}; 
     this.outputservice.modalRef = this.modalService.open(InfoModalComponent, config);
-    this.outputservice.modalRef.componentInstance.userId = this.user.userId;
-     
+    this.outputservice.modalRef.componentInstance.userId = this.user.userId;  
     this.outputservice.submitEvent.subscribe(user => {
        this.user = user;
        this.outputservice.closeModal(); 
     });
-
-    
-    // this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    //   this.closeResult = `Closed with: ${result}`;
-    // }, (reason) => {
-    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    // });
   }
 
-  
-
-  
-
-  private getDismissReason(reason: any): string {
-    
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  downloadMyCV(){
+    this.userService.getCvFile(this.user.userId).subscribe(res => res.body())
   }
-
- 
-
+  
 }
-function first(): import("rxjs").OperatorFunction<string, unknown> {
-  throw new Error('Function not implemented.');
-}
+
 

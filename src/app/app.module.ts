@@ -16,6 +16,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { InputModalComponent } from './components/modals/input-modal/input-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileDragerComponent } from './components/modals/file-drager/file-drager.component';
+import { CardModalComponent } from './components/modals/card-modal/card-modal.component';
 
 
 
@@ -37,6 +38,7 @@ export function createTranslateLoader(httpClient : HttpClient){
     InfoModalComponent,
     InputModalComponent,
     FileDragerComponent,
+    CardModalComponent,
     
     
    

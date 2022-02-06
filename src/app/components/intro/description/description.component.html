@@ -15,7 +15,7 @@
         <button *ngIf="isAdmin" type="button" class="btn button edit-button text-uppercase" (click)="openInfoModal()">
             {{ "BUTTONS.editButton" | translate }}
         </button>
-        <button type="button" class="ml-auto mr-5 btn button primary-button text-uppercase">
+        <button type="button" class="ml-auto mr-5 btn button primary-button text-uppercase" (click)="downloadMyCV()">
             {{ "BUTTONS.cvButton" | translate }}
         </button>
     </div>

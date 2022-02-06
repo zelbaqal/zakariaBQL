@@ -9,7 +9,6 @@ import { LanguageService } from '../language/language.service';
   providedIn: 'root'
 })
 export class UserService {
- 
   
   URL:string = "http://localhost:8080/api/userInfo/";
   
@@ -24,8 +23,13 @@ export class UserService {
     return this.http.get<User>(this.URL);
   }
 
-
   updateUserInformation(formData:FormData):Observable<User>{
     return this.http.patch<User>(`${this.URL}`, formData);
   }
+
+   getCvFile(userId:number): Observable<Blob> {
+     const cvName = userId + "-" + this.langageService.userLanguage;
+     return this.http.get(`${this.URL}${cvName}`,{responseType : 'blob'});
+  }
+ 
 }
