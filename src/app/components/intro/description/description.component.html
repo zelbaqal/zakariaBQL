@@ -1,10 +1,18 @@
-<h3 class="title-text">Bonjour,</h3>
-<h1 class="title-text ">Je m'appelle Zakaria,</h1>
-<h4 class="title-text ">Je suis un développeur Full Stack Java et Javascript.</h4>
-<div class="site-buttons">
+    <div  *ngIf="defaultLang == 'fr'" >
+        <h3 class="title-text">{{ user.salutation.fieldFR | titlecase}},</h3>
+        <h1 class="title-text ">{{ user.presentation.fieldFR }},</h1>
+        <h4 class="title-text">{{ user.jobDescription.fieldFR }}</h4>
+    </div>
+    <div  *ngIf="defaultLang == 'en'" >
+        <h3 class="title-text">{{ user.salutation.fieldEN | titlecase}},</h3>
+        <h1 class="title-text ">{{ user.presentation.fieldEN }},</h1>
+        <h4 class="title-text">{{ user.jobDescription.fieldEN }}</h4>
+    </div>
 
+
+<div class="site-buttons">
     <div class="d-flex flex-row flew-wrap">
-        <button *ngIf="isAdmin" type="button" class="btn button edit-button text-uppercase" (click)="open()">
+        <button *ngIf="isAdmin" type="button" class="btn button edit-button text-uppercase" (click)="openInfoModal()">
             {{ "BUTTONS.editButton" | translate }}
         </button>
         <button type="button" class="ml-auto mr-5 btn button primary-button text-uppercase">

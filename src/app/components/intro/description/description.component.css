@@ -1,6 +1,6 @@
 h3 {
 	padding-top: 20%;
-	font-weight: 500;
+	
 }
 h3::after {
 	content: '';
@@ -22,11 +22,13 @@ h3::after {
 	}
 }
 h1 {
-	font: normal bold 45px/60px var(--montessrat);
+	font: normal bold 45px/72px var(--montessrat);
 	font-weight: 600;
 	letter-spacing: 0.1rem;
 }
 h4 {
 	font-size: 1.2rem;
+	line-height: 1.8em;
+	margin-bottom: 1.3em;
 }
 

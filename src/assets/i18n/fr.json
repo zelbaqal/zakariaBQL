@@ -11,12 +11,23 @@
     },
     "BUTTONS":{
         "editButton":"éditer profil",
-        "cvButton":"Télécharger mon CV"
+        "cvButton":"Télécharger mon CV",
+        "saveChangeButton":"Enregistrer vos changements",
+        "cancelButton":"Annuler"
     },
     "InputTitles":{
         "salutation":"Salutation",
         "presentation":"Présentation",
         "jobDescription":"Fonction"
+    },
+    "FILES":{
+        "uploadCvTextFrench":"Glisser votre CV (version-Française)",
+        "uploadCvTextEnglish":"Glisser votre CV (version-Anglaise)"
+    },
+    "ERRORS":{
+        "fileFormatError":"Format de fichier non valide",
+        "fileSizeError":"Taille de fichier non valide",
+        "fileSelectError":"Un seul fichier est accépté"
     }
    
 }

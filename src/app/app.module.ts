@@ -15,6 +15,7 @@ import { InfoModalComponent } from './components/modals/info-modal/info-modal.co
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { InputModalComponent } from './components/modals/input-modal/input-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileDragerComponent } from './components/modals/file-drager/file-drager.component';
 
 
 
@@ -35,6 +36,7 @@ export function createTranslateLoader(httpClient : HttpClient){
     PropertyExtractorPipe,
     InfoModalComponent,
     InputModalComponent,
+    FileDragerComponent,
     
     
    

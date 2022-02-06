@@ -7,6 +7,7 @@ import { ColaboratorComponent } from '../colaborators/colaborator/colaborator.co
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbDatepickerModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { Default$Langue } from 'src/app/pipes/default-lang';
 
 
 
@@ -16,6 +17,7 @@ import { NgbDatepickerModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap'
     ColaboratorComponent,
     DescriptionComponent,
     CreativeLogoComponent,
+    Default$Langue
     
   ],
   imports: [

@@ -11,11 +11,22 @@
     },
      "BUTTONS":{
         "editButton":"edit profil",
-        "cvButton":"Donwnload my resume"
+        "cvButton":"Donwnload my resume",
+        "saveChangeButton":"Save changes",
+        "cancelButton":"Cancel"
     },
      "InputTitles":{
         "salutation":"hellos",
         "presentation":"Presentation",
         "jobDescription":"Job"
+    },
+    "FILES":{
+        "uploadCvTextFrench":"Drag your Resume (Frensh-version)",
+        "uploadCvTextEnglish":"Drag your Resume (English-version)"
+    },
+    "ERRORS":{
+        "fileFormatError":"Not supported file format",
+        "fileSizeError":"File size exceeds the maximum limit",
+        "fileSelectError":"One file is accepted"
     }
 }

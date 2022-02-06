@@ -8,30 +8,29 @@
 
 
         <div class="row ">
-            <div class="col-10 offset-1">
-                <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
-                    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-                    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-                        {{ getFileName() }}
-                        <!-- <button class="button" type="button" (click)="openFileSelector()">Browse Files</button> -->
-                    </ng-template>
-                </ngx-file-drop>
+            <div class="col-md-6 ">
+                <file-drager [langKey]="'fr'" (onFileChange)="fileChange($event)"></file-drager>
+            </div>
+            <div class="col-md-6">
+               <file-drager [langKey]="'en'" (onFileChange)="fileChange($event)"></file-drager>
             </div>
         </div>
         <hr>
         <div class="row">
             <div class="col-md-6">
-                <button type="submit" class="w-100 btn button save-button text-uppercase">
-                    {{ "BUTTONS.cvButton" | translate }}
+                <button type="submit" class="w-100 btn button save-button text-uppercase" [disabled]="!(myForm.valid && checkFilesValidity())">
+                    {{ "BUTTONS.saveChangeButton" | translate }}
+                    
                 </button>
             </div>
             <div class="col-md-6">
-                <button type="button" class="w-100 btn button cancel-button text-uppercase">
-                    {{ "BUTTONS.cvButton" | translate }}
+                <button type="button" class="w-100 btn button cancel-button text-uppercase"  (click)="closeCurrentModal()">
+                    {{ "BUTTONS.cancelButton" | translate }}
                 </button>
             </div>
         </div>
     </form>
 </div>
 <div class="breadcrumb mb-0 mt-3"></div>
-<pre>Value {{ myForm.value | json }}</pre>
+<!-- <pre>Value {{ myForm.value | json }}</pre>
+<pre>Valid {{ myForm.valid | json }}</pre> -->

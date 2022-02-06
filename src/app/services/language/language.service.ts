@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
@@ -9,6 +9,7 @@ export class LanguageService {
   private languageKey : string = 'userLanguage';
   private _userLanguage : string = 'en';
   private supportedLanguage : string[] = ['fr','en'];
+  @Output() langChenged = new EventEmitter<string>();
 
   constructor( 
       private translate : TranslateService 
@@ -36,6 +37,7 @@ export class LanguageService {
     this._userLanguage = lang;
      localStorage.setItem(this.languageKey, this._userLanguage);
      this.translate.use(this._userLanguage);
+     this.langChenged.emit(lang);
   }
 
   get userLanguage(){

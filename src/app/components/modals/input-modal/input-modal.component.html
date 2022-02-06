@@ -1,20 +1,78 @@
-<div class="row" [formGroup]="infoGeneralForm">
-    <div class="col-md-2">
-        <div class="form-group">
-            <label class="mt-2">{{ 'InputTitles' | propertyExtractor : inputConfig.inputTitle | translate }}</label>
-        </div>
+<div
+  class="row"
+  [formGroup]="infoGeneralForm"
+  [ngSwitch]="inputConfig.inputType"
+>
+  <div class="col-md-2 text-center">
+    <div class="form-group">
+      <label class="mt-2">{{
+        "InputTitles" | propertyExtractor: inputConfig.inputTitle | translate
+      }}</label>
     </div>
-    <div class="col-md-5">
-        <div class="form-group">
-            <input tabindex="-1" type="text" class="form-control" [placeholder]="inputConfig.inputPlaceHolder.fr"
-                formControlName="fieldFR" (blur)="onTouched()">
-        </div>
+  </div>
+  <div class="col-md-5" *ngSwitchCase="1">
+    <div class="form-group">
+      <input
+        tabindex="-1"
+        type="text"
+        class="form-control"
+        [placeholder]="inputConfig.inputPlaceHolder.fr"
+        formControlName="fieldFR"
+        (blur)="onTouched()"
+        [ngClass]="{ 'is-invalid': f.fieldFR.touched && f.fieldFR.errors }"
+      />
+      <div *ngIf="f.fieldFR.touched || f.fieldFR.dirty && f.fieldFR.errors" class="invalid-feedback">
+          <div *ngIf="f.fieldFR.errors?.required">Ce champ est obligatoire</div>
+      </div>
     </div>
-    <div class="col-md-5">
-        <div class="form-group">
-            <input tabindex="-1" type="text" class="form-control" [placeholder]="inputConfig.inputPlaceHolder.en"
-                formControlName="fieldEN" (blur)="onTouched()">
-        </div>
+  </div>
+  <div class="col-md-5" *ngSwitchCase="1">
+    <div class="form-group">
+      <input
+        tabindex="-1"
+        type="text"
+        class="form-control"
+        [placeholder]="inputConfig.inputPlaceHolder.en"
+        formControlName="fieldEN"
+        (blur)="onTouched()"
+        [ngClass]="{ 'is-invalid': f.fieldEN.touched && f.fieldEN.errors }"
+      />
+      <div *ngIf="f.fieldEN.touched || f.fieldEN.dirty && f.fieldEN.errors" class="invalid-feedback">
+          <div *ngIf="f.fieldEN.errors?.required">This field is required</div>
+      </div>
     </div>
+  </div>
+  <div class="col-md-5" *ngSwitchCase="2">
+    <div class="form-group">
+      <textarea
+        tabindex="-1"
+        rows="3"
+        class="form-control"
+        [placeholder]="inputConfig.inputPlaceHolder.fr"
+        formControlName="fieldFR"
+        (blur)="onTouched()"
+        [ngClass]="{ 'is-invalid': f.fieldFR.touched && f.fieldFR.errors }"
+      ></textarea>
+       <div *ngIf="f.fieldFR.touched || f.fieldFR.dirty && f.fieldFR.errors" class="invalid-feedback">
+          <div *ngIf="f.fieldFR.errors?.required">Ce champ est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5" *ngSwitchCase="2">
+    <div class="form-group">
+      <textarea
+        tabindex="-1"
+        rows="3"
+        class="form-control"
+        [placeholder]="inputConfig.inputPlaceHolder.en"
+        formControlName="fieldEN"
+        (blur)="onTouched()"
+        [ngClass]="{ 'is-invalid': f.fieldEN.touched && f.fieldEN.errors }"
+      ></textarea>
+       <div *ngIf="f.fieldEN.touched || f.fieldEN.dirty && f.fieldEN.errors" class="invalid-feedback">
+          <div *ngIf="f.fieldEN.errors?.required">This field is required</div>
+      </div>
+    </div>
+  </div>
 </div>
-<hr>
+<hr />
