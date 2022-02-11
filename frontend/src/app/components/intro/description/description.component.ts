@@ -6,9 +6,8 @@ import { User } from 'src/app/models/user.model';
 import { OutPutService } from 'src/app/services/divers/out-put.service';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { UserService } from 'src/app/services/userServices/user.service';
-import { CardModalComponent } from '../../modals/card-modal/card-modal.component';
 import { InfoModalComponent } from '../../modals/info-modal/info-modal.component';
-
+import { saveAs } from 'file-saver';
 
 
 @Component({
@@ -64,7 +63,8 @@ export class DescriptionComponent implements OnInit, OnDestroy {
   }
 
   downloadMyCV(){
-    this.userService.getCvFile(this.user.userId).subscribe(res => res.body())
+    const fileName = "CV-"+ this.languageService.userLanguage.toUpperCase();
+    this.userService.getCvFile(this.user.userId).subscribe(blob => saveAs(blob, fileName));
   }
   
 }
