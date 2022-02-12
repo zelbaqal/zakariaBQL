@@ -28,6 +28,8 @@ public class UserInformations {
     private String presentationEn;
     private String descriptionFr;
     private String descriptionEn;
+    private String resumeNameFr;
+    private String resumeNameEn;
     private Blob resumeFr;
     private Blob resumeEn;
 }

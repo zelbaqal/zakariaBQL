@@ -21,8 +21,8 @@
         "jobDescription":"Fonction"
     },
     "FILES":{
-        "uploadCvTextFrench":"Glisser votre CV (version-Française)",
-        "uploadCvTextEnglish":"Glisser votre CV (version-Anglaise)"
+        "uploadCvTextFR":"Glisser votre CV (version-Française)",
+        "uploadCvTextEN":"Glisser votre CV (version-Anglaise)"
     },
     "ERRORS":{
         "fileFormatError":"Format de fichier non valide",

@@ -12,4 +12,6 @@ public class UserInformationsDto {
     private FielldsLanguage salutation;
     private FielldsLanguage presentation;
     private FielldsLanguage jobDescription;
+    private String resumeNameEn;
+    private String resumeNameFr;
 }

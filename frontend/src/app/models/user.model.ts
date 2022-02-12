@@ -10,12 +10,15 @@ export class User implements Deserializable {
   salutation: FielldsLanguage;
   presentation: FielldsLanguage ;
   jobDescription: FielldsLanguage;
+  resumeNameFr : string;
+  resumeNameEn : string;
 
   constructor(){
       this.salutation = new FielldsLanguage();
       this.presentation = new FielldsLanguage();
       this.jobDescription = new FielldsLanguage();
-
+      this.resumeNameEn = "";
+      this.resumeNameFr = "";
   }
 
   deserialize(input: any) {

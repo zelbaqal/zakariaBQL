@@ -21,8 +21,8 @@
         "jobDescription":"Job"
     },
     "FILES":{
-        "uploadCvTextFrench":"Drag your Resume (Frensh-version)",
-        "uploadCvTextEnglish":"Drag your Resume (English-version)"
+        "uploadCvTextFR":"Drag your Resume (Frensh-version)",
+        "uploadCvTextEN":"Drag your Resume (English-version)"
     },
     "ERRORS":{
         "fileFormatError":"Not supported file format",

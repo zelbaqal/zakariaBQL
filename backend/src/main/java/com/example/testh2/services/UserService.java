@@ -48,19 +48,28 @@ public class UserService {
     }
 
     public UserInformationsDto updateUserInformation(UserInformationsDto userInfo, MultipartFile cvFileFR, MultipartFile cvFileEN) {
-        UserInformations userInformations = userInformationsMpapper.INSTANCE
-                                                 .toUserInformations(userInfo);
+        UserInformations userInformations = null;
+        if(userInfo.getUserId() != null){
+            userInformations = userInformationsRepo.getById(userInfo.getUserId());
+        }else{
+            userInformations = userInformationsMpapper.INSTANCE.toUserInformations(userInfo);
+        }
+
         if(!cvFileFR.isEmpty() && cvFileFR.getSize() > 0){
             //User not update his french cv file
             userInformations.setResumeFr(BlobProxy.generateProxy(byteExtractor(cvFileFR)));
             String fileName = userInfo.getUserId() + "-fr";
-            fileStorageService.save(cvFileEN, fileName, StringUtils.getFilenameExtension(cvFileFR.getOriginalFilename()));
+            String extention = StringUtils.getFilenameExtension(cvFileFR.getOriginalFilename());
+            userInformations.setResumeNameFr(fileName +"."+extention);
+            fileStorageService.save(cvFileFR, fileName, extention);
         }
         if(!cvFileEN.isEmpty() && cvFileEN.getSize() > 0){
             //User not update his french cv file
             userInformations.setResumeEn(BlobProxy.generateProxy(byteExtractor(cvFileEN)));
             String fileName = userInfo.getUserId() + "-en";
-            fileStorageService.save(cvFileEN, fileName, StringUtils.getFilenameExtension(cvFileFR.getOriginalFilename()));
+            String extention = StringUtils.getFilenameExtension(cvFileEN.getOriginalFilename());
+            userInformations.setResumeNameEn(fileName +"."+extention);
+            fileStorageService.save(cvFileEN, fileName, extention);
         }
 
         return userInformationsMpapper.INSTANCE.toUserInformationDto(userInformationsRepo.save(userInformations));

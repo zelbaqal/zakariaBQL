@@ -6,16 +6,33 @@
             [formControlName]="inputConfig.inputTitle">
         </input-modal>
 
-
         <div class="row ">
-            <div class="col-md-6 ">
-                <file-drager [langKey]="'fr'" (onFileChange)="fileChange($event)"></file-drager>
+            <div class="col-md-6">
+               <div *ngIf="this.user.resumeNameFr" class="close-div text-center">
+                <label class="mr-3">{{ user.resumeNameFr }}</label>
+                <button type="button" class="file-btn" (click)="clearResumeField('fr')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#DC143C" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                      </svg>
+                </button>
+               </div>
+                <file-drager *ngIf="!this.user.resumeNameFr" [langKey]="'fr'" [fileName]="user.resumeNameFr" (onFileChange)="fileChange($event)"></file-drager>
             </div>
             <div class="col-md-6">
-               <file-drager [langKey]="'en'" (onFileChange)="fileChange($event)"></file-drager>
+                <div *ngIf="this.user.resumeNameEn" class="close-div text-center">
+                    <label class="mr-3">{{ user.resumeNameEn }}</label>
+                    <button type="button" class="file-btn" (click)="clearResumeField('en')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#DC143C" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                          </svg>
+                    </button>
+                   </div>
+               <file-drager *ngIf="!this.user.resumeNameEn" [langKey]="'en'" [fileName]="user.resumeNameEn" (onFileChange)="fileChange($event)"></file-drager>
             </div>
         </div>
+
         <hr>
+
         <div class="row">
             <div class="col-md-6">
                 <button type="submit" class="w-100 btn button save-button text-uppercase" [disabled]="!(myForm.valid && checkFilesValidity())">

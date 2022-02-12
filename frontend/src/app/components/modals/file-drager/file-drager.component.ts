@@ -9,6 +9,7 @@ import { NgxFileDropEntry, FileSystemFileEntry } from 'ngx-file-drop';
 export class FileDragerComponent implements OnInit {
 
   @Input() langKey : string;
+  @Input() fileName : string;
   @Output() onFileChange : EventEmitter<Map<string,File>>;
   files:NgxFileDropEntry[]=[];
   errors:string[];
@@ -21,11 +22,14 @@ export class FileDragerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   getFileNameEn(){
+   getFileName(){
+      if(this.fileName && this.files.length == 0){
+        return this.fileName;
+      }
       if(this.files.length > 0){
         return this.files[0].fileEntry.name;
       }
-      return "FILES.uploadCvTextEnglish";
+      return "FILES.uploadCvText" + this.langKey.toUpperCase();
     }
 
     isFileAllowed(fileName: string):boolean {
@@ -49,7 +53,6 @@ export class FileDragerComponent implements OnInit {
       isFileSizeAllowed = true;
     }
     return isFileSizeAllowed;
-
   }
 
  

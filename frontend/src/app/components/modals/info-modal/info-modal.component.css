@@ -41,6 +41,16 @@
 	z-index: -1;
 }
 
+.file-btn{
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+
+
+
+
 /* .button.save-button:hover {
 	background: rgb(190, 187, 187);
 	background-clip: padding-box;

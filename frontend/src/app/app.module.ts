@@ -17,6 +17,7 @@ import { InputModalComponent } from './components/modals/input-modal/input-modal
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileDragerComponent } from './components/modals/file-drager/file-drager.component';
 import { CardModalComponent } from './components/modals/card-modal/card-modal.component';
+import { ClickStopPropagation } from './directives/stopClickPropagation';
 
 
 
@@ -35,6 +36,7 @@ export function createTranslateLoader(httpClient : HttpClient){
     AppComponent,
     HeaderComponent,
     PropertyExtractorPipe,
+    ClickStopPropagation,
     InfoModalComponent,
     InputModalComponent,
     FileDragerComponent,

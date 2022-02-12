@@ -12,4 +12,5 @@ public interface FileStorageService {
 
     void save(MultipartFile file, String fileName, String extention);
     Resource load(String filename);
+    void delete(String filename);
 }

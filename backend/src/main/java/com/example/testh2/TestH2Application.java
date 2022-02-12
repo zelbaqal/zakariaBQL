@@ -35,6 +35,8 @@ public class TestH2Application implements CommandLineRunner {
         user.setDescriptionFr("Je suis un developpeur fullStack");
         user.setPresentationFr("Je m'appelle Zakaria");
         user.setPresentationEn("My name's Zakaria");
+        user.setResumeNameEn("resumeEn.pdf");
+        user.setResumeNameFr("resumeFr.pdf");
 
         userInformationsRepo.save(user);
     }

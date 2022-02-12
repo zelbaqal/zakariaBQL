@@ -21,4 +21,9 @@ public class FileSaverDB implements FileStorageService {
     public Resource load(String filename) {
         return null;
     }
+
+    @Override
+    public void delete(String filename) {
+
+    }
 }

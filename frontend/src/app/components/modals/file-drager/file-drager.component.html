@@ -2,7 +2,7 @@
     <ngx-file-drop [directory]="false" accept=".pdf"   dropZoneLabel="Drag" (onFileDrop)="droppedFile($event)"
                         (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
                         <ng-template  ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-                            {{ getFileNameEn() | translate }}
+                            {{ getFileName() | translate }}
                             <!-- <button class="button" type="button" (click)="openFileSelector()">Browse Files</button> -->
                         </ng-template>
                     </ngx-file-drop>

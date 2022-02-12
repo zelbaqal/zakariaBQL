@@ -35,16 +35,21 @@ public class FileSaverFolder implements FileStorageService {
     @Override
     public void save(MultipartFile file, String fileName, String extention) {
         String concatedFile = fileName +"."+ extention;
+        Path path = root.resolve(concatedFile);
+        if(Files.exists(path)){
+            //Delete old file and replace it with the new file
+            delete(concatedFile);
+        }
+        //File not exist
         try {
             Files.copy(file.getInputStream(), this.root.resolve(concatedFile));
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
         }
     }
 
     @Override
     public Resource load(String filename) {
-
         try {
             Path file = root.resolve(filename);
             Resource resource = new UrlResource(file.toUri());
@@ -54,6 +59,16 @@ public class FileSaverFolder implements FileStorageService {
                 throw new RuntimeException("Could not read the file!");
             }
         } catch (MalformedURLException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(String filename) {
+        try {
+            Path path = root.resolve(filename);
+            Files.delete(path);
+        }catch (IOException e){
             throw new RuntimeException("Error: " + e.getMessage());
         }
     }

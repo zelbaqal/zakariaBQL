@@ -26,6 +26,8 @@ public interface UserInformatiionsMpapper {
 
 
     @Mapping(source = "userId", target = "userId")
+    @Mapping(source = "resumeNameEn", target = "resumeNameEn")
+    @Mapping(source = "resumeNameFr", target = "resumeNameFr")
     @Mapping(source = "salutationFr", target = "salutation.fieldFR")
     @Mapping(source = "salutationEn", target = "salutation.fieldEN")
     @Mapping(source = "presentationEn", target = "presentation.fieldEN")

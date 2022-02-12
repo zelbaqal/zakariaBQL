@@ -33,8 +33,8 @@ public class UserController {
     @PatchMapping
     public ResponseEntity<UserInformationsDto> updateUserInfo(
             @RequestPart("userInfo") UserInformationsDto userInfo,
-            @RequestPart("cvFileFR")MultipartFile cvFileFR,
-            @RequestPart("cvFileEN")MultipartFile cvFileEN
+            @RequestPart(value = "cvFileFR", required = false)MultipartFile cvFileFR,
+            @RequestPart(value = "cvFileEN", required = false)MultipartFile cvFileEN
         ){
         return ResponseEntity.ok().body(userService.updateUserInformation(userInfo, cvFileFR, cvFileEN));
     }
