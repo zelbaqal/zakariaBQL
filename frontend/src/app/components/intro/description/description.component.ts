@@ -55,7 +55,7 @@ export class DescriptionComponent implements OnInit, OnDestroy {
   openInfoModal() {
     const config: NgbModalOptions = { size : 'xl',}; 
     this.outputservice.modalRef = this.modalService.open(InfoModalComponent, config);
-    this.outputservice.modalRef.componentInstance.user = this.user;  
+    this.outputservice.modalRef.componentInstance.userId = this.user.userId;  
     this.outputservice.submitEvent.subscribe(user => {
        this.user = user;
        this.outputservice.closeModal(); 

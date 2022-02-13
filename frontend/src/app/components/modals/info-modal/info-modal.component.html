@@ -8,7 +8,7 @@
 
         <div class="row ">
             <div class="col-md-6">
-               <div *ngIf="this.user.resumeNameFr" class="close-div text-center">
+               <div *ngIf="user.resumeNameFr" class="close-div text-center">
                 <label class="mr-3">{{ user.resumeNameFr }}</label>
                 <button type="button" class="file-btn" (click)="clearResumeField('fr')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#DC143C" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
@@ -16,10 +16,10 @@
                       </svg>
                 </button>
                </div>
-                <file-drager *ngIf="!this.user.resumeNameFr" [langKey]="'fr'" [fileName]="user.resumeNameFr" (onFileChange)="fileChange($event)"></file-drager>
+                <file-drager *ngIf="!user.resumeNameFr" [langKey]="'fr'" [fileName]="user.resumeNameFr" (onFileChange)="fileChange($event)"></file-drager>
             </div>
             <div class="col-md-6">
-                <div *ngIf="this.user.resumeNameEn" class="close-div text-center">
+                <div *ngIf="user.resumeNameEn" class="close-div text-center">
                     <label class="mr-3">{{ user.resumeNameEn }}</label>
                     <button type="button" class="file-btn" (click)="clearResumeField('en')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#DC143C" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
@@ -27,7 +27,7 @@
                           </svg>
                     </button>
                    </div>
-               <file-drager *ngIf="!this.user.resumeNameEn" [langKey]="'en'" [fileName]="user.resumeNameEn" (onFileChange)="fileChange($event)"></file-drager>
+               <file-drager *ngIf="!user.resumeNameEn" [langKey]="'en'" [fileName]="user.resumeNameEn" (onFileChange)="fileChange($event)"></file-drager>
             </div>
         </div>
 

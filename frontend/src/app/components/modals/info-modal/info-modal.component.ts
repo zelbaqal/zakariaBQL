@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { OutPutService } from 'src/app/services/divers/out-put.service';
 import { UserService } from 'src/app/services/userServices/user.service';
@@ -12,7 +13,7 @@ import { InputConfig, InputType } from '../input-modal/input-modal.component';
   templateUrl: './info-modal.component.html',
   styleUrls: ['./info-modal.component.css']
 })
-export class InfoModalComponent implements OnInit{
+export class InfoModalComponent implements OnInit, OnDestroy{
 
   inputsConfig : InputConfig[] = [
     {
@@ -41,9 +42,9 @@ export class InfoModalComponent implements OnInit{
     }
 ]
 
-  
-  @Input() public user:User;
- 
+  subscriptions : Subscription[] = []
+  @Input() public userId:number;
+  user : User;
   myForm: FormGroup;
   public filesFR: NgxFileDropEntry[] = [];
   public filesEN: NgxFileDropEntry[] = [];
@@ -52,6 +53,7 @@ export class InfoModalComponent implements OnInit{
 
   constructor(private outputservice : OutPutService,
               private userService : UserService) {
+                this.user = new User();
                 this.myForm  = new FormGroup({
                       userId : new FormControl(null),
                       salutation : new FormControl(null,Validators.required),
@@ -64,14 +66,20 @@ export class InfoModalComponent implements OnInit{
 
 
   ngOnInit(): void {
-      if(this.user){
-        this.myForm.controls.userId.setValue(this.user.userId);
-        this.myForm.controls.salutation.setValue(this.user.salutation);
-        this.myForm.controls.presentation.setValue(this.user.presentation);
-        this.myForm.controls.jobDescription.setValue(this.user.jobDescription);
-        this.myForm.controls.resumeNameFr.setValue(this.user.resumeNameFr);
-        this.myForm.controls.resumeNameEn.setValue(this.user.resumeNameEn);
-      }         
+    this.subscriptions.push(
+          this.userService.getGlobalInfoUser(this.userId).subscribe(user =>{
+              this.myForm.controls.userId.setValue(user.userId);
+              this.myForm.controls.salutation.setValue(user.salutation);
+              this.myForm.controls.presentation.setValue(user.presentation);
+              this.myForm.controls.jobDescription.setValue(user.jobDescription);
+              this.myForm.controls.resumeNameFr.setValue(user.resumeNameFr);
+              this.myForm.controls.resumeNameEn.setValue(user.resumeNameEn);
+              this.user = user;
+    }));        
+    }
+
+    ngOnDestroy(): void {
+      this.subscriptions.forEach(sub => sub.unsubscribe());
     }
 
     
