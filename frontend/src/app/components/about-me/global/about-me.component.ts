@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutMeComponent implements OnInit {
 
-  para:string = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi aut tota obcaecati laboriosam quia sint facilis possimus animi consequuntur vel. Odit qui hitenetur fuga inventore quidem nihil, odio deserunt";
+  para:string = "Développeur full stack Java/Jee - Javascript et certifié Scrum, avec un an d’expérience. Polyvalent, je maîtrise les frameworks Spring et Angular et aussi les différentes étapes techniques de la création d’un site ou d’une application web, de la compréhension des besoins utilisateurs, au développement frontend et backend en passant par la maintenance."
 
   constructor() { }
 

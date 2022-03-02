@@ -1,4 +1,5 @@
-
+@import "~ag-grid-community/dist/styles/ag-grid.css";  
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";  
 
 /* CSS variables */
 @import url('./assets/css/partials/_variables.css');

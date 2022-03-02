@@ -8,6 +8,7 @@ import { ProgressBarComponent } from "./progress-bar/progress-bar.component";
 import { CompetenceComponent } from './competence/competence.component';
 import { AboutMeRoutingModule } from "./about-me.routing";
 import { ParagrapheLength } from "src/app/pipes/property-extractor.pipe";
+import { EditProfilModule } from "../edit-profil/edit-profil.module";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ParagrapheLength } from "src/app/pipes/property-extractor.pipe";
   ],
   imports: [
     CommonModule,
+    EditProfilModule,
     AboutMeRoutingModule
   ]
 })

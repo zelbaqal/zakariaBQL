@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileDragerComponent } from './components/modals/file-drager/file-drager.component';
 import { CardModalComponent } from './components/modals/card-modal/card-modal.component';
 import { ClickStopPropagation } from './directives/stopClickPropagation';
+import { EditProfilComponent } from './components/edit-profil/edit-profil.component';
 
 
 
@@ -63,7 +64,9 @@ export function createTranslateLoader(httpClient : HttpClient){
     BrowserAnimationsModule,
     IntroModule,
     ExperienceModule,
-    NgxFileDropModule
+    NgxFileDropModule,
+    
+
 
   ],
   providers: [],

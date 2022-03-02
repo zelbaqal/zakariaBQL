@@ -1,6 +1,8 @@
 package com.example.testh2;
 
+import com.example.testh2.dao.ColaboratorRepos;
 import com.example.testh2.dao.UserInformationsRepo;
+import com.example.testh2.entity.Colaborator;
 import com.example.testh2.entity.UserInformations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,6 +21,8 @@ public class TestH2Application implements CommandLineRunner {
 
     @Autowired
     private UserInformationsRepo userInformationsRepo;
+    @Autowired
+    private ColaboratorRepos colaboratorRepos;
 
     public static void main(String[] args) {
         SpringApplication.run(TestH2Application.class, args);
@@ -39,5 +43,8 @@ public class TestH2Application implements CommandLineRunner {
         user.setResumeNameFr("resumeFr.pdf");
 
         userInformationsRepo.save(user);
+
+
+
     }
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
+import { ConstantVariables } from '../ConstantVariables';
 import { LanguageService } from '../language/language.service';
 
 @Injectable({
@@ -10,7 +11,7 @@ import { LanguageService } from '../language/language.service';
 })
 export class UserService {
   
-  URL:string = "http://localhost:8080/api/userInfo/";
+  URL:string = `${ConstantVariables.DOMAIN}/api/userInfo/`;
   
   constructor(private http : HttpClient, private langageService : LanguageService) { }
 

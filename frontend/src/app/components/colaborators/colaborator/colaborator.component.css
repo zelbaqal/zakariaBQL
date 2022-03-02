@@ -1,18 +1,43 @@
-/* Start collaborators */
-.collaborators .card{
+ .card{
 	border: 0px transparent;
 	background: transparent;
 }
-.collaborators svg{
-	font-size: 4em;
-	background: var(--gradient-color);
-    -webkit-background-clip: text;
+
+.icon{
+	width: 80%;
+	height: 80%;
 	background-clip: transparent;
-    -webkit-text-fill-color: transparent;
 }
 
-.collaborators svg:hover{
+ .icon:hover{
 	cursor: pointer;
-	transform: scale(1.8);
+	transform: scale(1.3);
 }
-/* End collaborators */
+
+hr{
+	display: none;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+	.icon{
+		width: 40%;
+		height: 40%;
+		background-clip: transparent;
+		margin: 5% auto;
+	}	
+  }
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+	
+	.icon{
+		width: 40%;
+		height: 40%;
+		background-clip: transparent;
+		margin: 5% auto;
+	}		
+	hr{
+		display: block;
+	}
+  }
