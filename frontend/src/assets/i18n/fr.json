@@ -28,6 +28,11 @@
         "fileFormatError":"Format de fichier non valide",
         "fileSizeError":"Taille de fichier non valide",
         "fileSelectError":"Un seul fichier est accépté"
+    },
+    "AGGRID":{
+        "logo":"Logo",
+        "name":"Nom",
+        "action":"Action"
     }
    
 }

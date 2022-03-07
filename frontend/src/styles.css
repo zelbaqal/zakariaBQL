@@ -1,5 +1,5 @@
 @import "~ag-grid-community/dist/styles/ag-grid.css";  
-@import "~ag-grid-community/dist/styles/ag-theme-balham.css";  
+@import 'ag-grid-community/dist/styles/ag-theme-alpine.css'; 
 
 /* CSS variables */
 @import url('./assets/css/partials/_variables.css');
@@ -17,3 +17,7 @@ html, body{
 }
 html, body { height: 100%; }
 /* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+.acion-style{
+    margin-left: 8%;
+}

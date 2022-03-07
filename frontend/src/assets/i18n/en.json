@@ -28,5 +28,10 @@
         "fileFormatError":"Not supported file format",
         "fileSizeError":"File size exceeds the maximum limit",
         "fileSelectError":"One file is accepted"
+    },
+    "AGGRID":{
+        "logo":"Logo",
+        "name":"Name",
+        "action":"Action"
     }
 }
