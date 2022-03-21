@@ -1,0 +1,124 @@
+<div class="card mb-3">
+    <div class="card-header">{{"ACCOUNTDETAILS.title" | translate}}</div>
+    <div class="card-body">
+        <form (ngSubmit)='logsubmitUserInfo()' [formGroup]='userInfoForm' novalidate>
+            <!-- Form Row-->
+            <div class="row gx-3 mb-3">
+                <!-- Form Group (first name)-->
+                <div class="col-md-6">
+                    <label class="small mb-1" for="inputFirstName">{{"ACCOUNTDETAILS.firstname" | translate}}</label>
+                    <input formControlName='firstname' class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" >
+                    <div *ngIf="!userInfoForm.valid || firstname.dirty && firstname.touched" class="invalid-feedback d-block">
+                        <div *ngIf="firstname.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                        <div *ngIf="firstname.hasError('minlength')">4 {{"ACCOUNTDETAILS.errorMinLength" | translate}}</div>
+                        <div *ngIf="firstname.hasError('maxlength')">30 {{"ACCOUNTDETAILS.errorMaxLength" | translate}}</div>
+                    </div>   
+                </div>
+                <!-- Form Group (last name)-->
+                <div class="col-md-6">
+                    <label class="small mb-1" for="inputLastName">{{"ACCOUNTDETAILS.lastname" | translate}}</label>
+                    <input formControlName='lastname' class="form-control" id="inputLastName" type="text" placeholder="Enter your last name">
+                    <div *ngIf="!userInfoForm.valid || lastname.dirty && lastname.touched" class="invalid-feedback d-block">
+                        <div *ngIf="lastname.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                        <div *ngIf="lastname.hasError('minlength')">4 {{"ACCOUNTDETAILS.errorMinLength" | translate}}</div>
+                        <div *ngIf="lastname.hasError('maxlength')">30 {{"ACCOUNTDETAILS.errorMaxLength" | translate}}</div>
+                    </div>  
+                </div>  
+            </div>
+            <!-- Form Group (email address)-->
+            <div class="mb-3">
+                <label class="small mb-1" for="inputEmailAddress">{{"ACCOUNTDETAILS.email" | translate}}</label>
+                <input formControlName='email' class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address">
+                <div *ngIf="!userInfoForm.valid || email.dirty && email.touched" class="invalid-feedback d-block">
+                    <div *ngIf="email.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                    <div *ngIf="email.invalid">{{"ACCOUNTDETAILS.errorEmail" | translate}}</div>
+                </div> 
+            </div>
+            <!-- Form Row        -->
+            <div class="row gx-3 mb-3">
+                <!-- Form Group (organization name)-->
+                <div class="col-md-6">
+                    <label class="small mb-1" for="inputOrgName">{{"ACCOUNTDETAILS.city" | translate}}</label>
+                    <input formControlName='city' class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" >
+                    <div *ngIf="!userInfoForm.valid || city.dirty && city.touched" class="invalid-feedback d-block">
+                        <div *ngIf="city.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                        <div *ngIf="city.hasError('minlength')">4 {{"ACCOUNTDETAILS.errorMinLength" | translate}}</div>
+                        <div *ngIf="city.hasError('maxlength')">30 {{"ACCOUNTDETAILS.errorMaxLength" | translate}}</div>
+                    </div>  
+                </div>
+                <!-- Form Group (location)-->
+                <div class="col-md-6">
+                    <label class="small mb-1" for="inputLocation">{{"ACCOUNTDETAILS.country" | translate}}</label>
+                    <input formControlName='country' class="form-control" id="inputLocation" type="text" placeholder="Enter your location">
+                    <div *ngIf="!userInfoForm.valid || country.dirty && country.touched" class="invalid-feedback d-block">
+                        <div *ngIf="country.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                        <div *ngIf="country.hasError('minlength')">4 {{"ACCOUNTDETAILS.errorMinLength" | translate}}</div>
+                        <div *ngIf="country.hasError('maxlength')">30 {{"ACCOUNTDETAILS.errorMaxLength" | translate}}</div>
+                    </div>  
+                </div>
+            </div>
+        
+            <!-- Form Row-->
+            <div class="row gx-3 mb-3">
+                <!-- Form Group (phone number)-->
+                <div class="col-md-6">
+                    <label class="small mb-1" for="inputPhone">{{"ACCOUNTDETAILS.phone" | translate}}</label>
+                    <input formControlName='phone' class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number">
+                    <div *ngIf="!userInfoForm.valid || phone.dirty && phone.touched" class="invalid-feedback d-block">
+                        <div *ngIf="phone.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                        <div *ngIf="phone.invalid">4 {{"ACCOUNTDETAILS.phoneError" | translate}}</div>
+                    </div>
+                </div>
+                <!-- Form Group (birthday)-->
+                <div class="col-md-6">
+                    <label class="small mb-1" for="inputBirthday">{{"ACCOUNTDETAILS.birthday" | translate}}</label>
+                    <input formControlName='birthday'
+                    class="form-control" id="inputBirthday" 
+                    type="date" placeholder="Enter your birthday"
+                    [value]="'2022-10-15' | date:'yyyy-MM-dd'">
+                    <div *ngIf="!userInfoForm.valid || birthday.dirty && birthday.touched" class="invalid-feedback d-block">
+                        <div *ngIf="birthday.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                    <!-- Form Group (email address)-->
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputEmailAddress">{{"ACCOUNTDETAILS.description" | translate}}-FR</label>
+                        <textarea formControlName='descriptionFr' class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address"></textarea>
+                        <div *ngIf="!userInfoForm.valid || descriptionFr.dirty && descriptionFr.touched" class="invalid-feedback d-block">
+                            <div *ngIf="descriptionFr.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                            <div *ngIf="descriptionFr.hasError('minlength')">10 {{"ACCOUNTDETAILS.errorMinLength" | translate}}</div>
+                            <div *ngIf="descriptionFr.hasError('maxlength')">255 {{"ACCOUNTDETAILS.errorMaxLength" | translate}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputEmailAddress">{{"ACCOUNTDETAILS.description" | translate}}-EN</label>
+                        <textarea formControlName='descriptionEn' class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address"></textarea>
+                        <div *ngIf="!userInfoForm.valid || descriptionEn.dirty && descriptionEn.touched" class="invalid-feedback d-block">
+                            <div *ngIf="descriptionEn.hasError('required')">{{"ACCOUNTDETAILS.errorRequired" | translate}}</div>
+                            <div *ngIf="descriptionEn.hasError('minlength')">10 {{"ACCOUNTDETAILS.errorMinLength" | translate}}</div>
+                            <div *ngIf="descriptionEn.hasError('maxlength')">255 {{"ACCOUNTDETAILS.errorMaxLength" | translate}}</div>
+                        </div>
+                    </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 col-6">
+                    <!-- Cancel button-->
+                    <button class="btn btn-secondary btn-block text-white p-4" type="button">{{"BUTTONS.cancelButton" | translate}}</button>
+                
+                </div>
+                <div class="col-md-6 col-6">
+                    <!-- Save changes button-->
+                    <button class="btn btn-success btn-block text-white p-4" [disabled]="!userInfoForm.valid || (loading$ | async)" type="submit">
+                        <div *ngIf="loading$ | async" class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        {{"BUTTONS.saveChangeButton" | translate}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/models/user.model';
+import { UserHomeInfo } from 'src/app/models/userHomeInfo.model';
 import { OutPutService } from 'src/app/services/divers/out-put.service';
 import { UserService } from 'src/app/services/userServices/user.service';
 import { InputConfig, InputType } from '../input-modal/input-modal.component';
@@ -44,7 +44,7 @@ export class InfoModalComponent implements OnInit, OnDestroy{
 
   subscriptions : Subscription[] = []
   @Input() public userId:number;
-  user : User;
+  user : UserHomeInfo;
   myForm: FormGroup;
   public filesFR: NgxFileDropEntry[] = [];
   public filesEN: NgxFileDropEntry[] = [];
@@ -53,7 +53,7 @@ export class InfoModalComponent implements OnInit, OnDestroy{
 
   constructor(private outputservice : OutPutService,
               private userService : UserService) {
-                this.user = new User();
+                this.user = new UserHomeInfo();
                 this.myForm  = new FormGroup({
                       userId : new FormControl(null),
                       salutation : new FormControl(null,Validators.required),
@@ -124,7 +124,7 @@ export class InfoModalComponent implements OnInit, OnDestroy{
         formData.append('cvFileFR', this.cvFileFrensh);
         formData.append('cvFileEN', this.cvFileEnglish);
         //TO DO send request to server
-        this.userService.updateUserInformation(formData).subscribe(data => {
+        this.userService.updateUserHomeInformation(formData).subscribe(data => {
           this.outputservice.submitEvent.emit(data);
         }) 
 }

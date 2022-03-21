@@ -1,14 +1,14 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { User } from 'src/app/models/user.model';
+import { UserHomeInfo } from 'src/app/models/userHomeInfo.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OutPutService {
 
-  @Output() submitEvent = new EventEmitter<User>();
+  @Output() submitEvent = new EventEmitter<UserHomeInfo>();
   modalRef : NgbModalRef;
 
   constructor() { }

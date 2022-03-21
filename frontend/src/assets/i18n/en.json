@@ -30,8 +30,27 @@
         "fileSelectError":"One file is accepted"
     },
     "AGGRID":{
-        "logo":"Logo",
-        "name":"Name",
+        "imageName":"Logo",
+        "tooltip":"Name",
         "action":"Action"
+    },
+    "ACCOUNTDETAILS":{
+        "title":"Account details",
+        "profilePic":"Profile Picture",
+        "imageSize":"JPG or PNG no larger than 5 MB",
+        "uploadButton":"Upload new image",
+        "firstname":"Firstname",
+        "errorRequired":"This field is required",
+        "errorMinLength":"At minimum character",
+        "errorMaxLength":"At maximum character",
+        "errorEmail":"This mail is not a valid mail",
+        "phoneError":"This phone number is not a valid number phone",
+        "lastname":"Lastname",
+        "email":"email",
+        "city":"City name",
+        "country":"Country name",
+        "phone":"Phone number",
+        "birthday":"Birthday",
+        "description":"Description"
     }
 }

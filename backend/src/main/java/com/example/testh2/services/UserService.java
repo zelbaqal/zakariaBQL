@@ -1,7 +1,9 @@
 package com.example.testh2.services;
 
 import com.example.testh2.dao.UserInformationsRepo;
+import com.example.testh2.dao.UserRepos;
 import com.example.testh2.dto.UserInformationsDto;
+import com.example.testh2.entity.User;
 import com.example.testh2.entity.UserInformations;
 import com.example.testh2.mappers.UserInformatiionsMpapper;
 import com.example.testh2.services.files.DataExtractorService;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,7 @@ public class UserService {
     //private final DataExtractorService dataExtractorService;
 
     private final UserInformationsRepo userInformationsRepo;
+    private final UserRepos userRepos;
     private final UserInformatiionsMpapper userInformationsMpapper;
 
     @Autowired
@@ -47,11 +51,11 @@ public class UserService {
                 .toUserInformationDto(userInformationsRepo.findAll().get(0));
     }
 
-    public UserInformationsDto updateUserInformation(UserInformationsDto userInfo, MultipartFile cvFileFR, MultipartFile cvFileEN) {
+    public UserInformationsDto updateUserHomeInformation(UserInformationsDto userInfo, MultipartFile cvFileFR, MultipartFile cvFileEN) {
         UserInformations userInformations = userInformationsMpapper.INSTANCE.toUserInformations(userInfo);
         String extention = "pdf"; //StringUtils.getFilenameExtension(cvFileFR.getOriginalFilename());
-        String fileNameFr = userInfo.getUserId() + "-fr";
-        String fileNameEn = userInfo.getUserId() + "-en";
+        String fileNameFr = "cv-"+userInfo.getUserId()+"-fr";
+        String fileNameEn = "cv-"+userInfo.getUserId()+"-en";
 
         userInformations.setResumeNameFr(fileNameFr +"."+extention);
         userInformations.setResumeNameEn(fileNameEn +"."+extention);
@@ -69,6 +73,20 @@ public class UserService {
         return userInformationsMpapper.INSTANCE.toUserInformationDto(userInformationsRepo.save(userInformations));
     }
 
+    public String updateUserEditInformation(User userInfo, MultipartFile userImage) {
+
+        User user = userRepos.findById(userInfo.getUserId()).orElseThrow(()-> new EntityNotFoundException("Not found"));
+
+        //save image if exist
+        if(userImage != null){
+            String extention = StringUtils.getFilenameExtension(userImage.getOriginalFilename());
+            fileStorageService.save(userImage,"profil-"+user.getUserId(), extention);
+            userInfo.setImageName("profil-"+user.getUserId()+"."+ extention);
+        }
+        userRepos.save(userInfo);
+        return "user updated successufuly";
+    }
+
 
 
     private byte[] byteExtractor(MultipartFile file){
@@ -82,6 +100,10 @@ public class UserService {
     public Resource loadPdfFile(String pdfName) {
         String fileName = pdfName + ".pdf";
         return fileStorageService.load(fileName);
+    }
+
+    public User getUserById(Long id) {
+        return userRepos.findById(id).get();
     }
 
 

@@ -30,9 +30,28 @@
         "fileSelectError":"Un seul fichier est accépté"
     },
     "AGGRID":{
-        "logo":"Logo",
-        "name":"Nom",
+        "imageName":"Logo",
+        "tooltip":"Nom",
         "action":"Action"
+    },
+    "ACCOUNTDETAILS":{
+        "title":"Details de Compte",
+        "profilePic":"Photo de profil",
+        "imageSize":"JPG or PNG taille max 5 MB",
+        "uploadButton":"Charger une photo",
+        "firstname":"Prénom",
+        "errorRequired":"Ce Champs est obligatoire",
+        "errorMinLength":"Caractères au minimun",
+        "errorMaxLength":"Caractères au maximum",
+        "errorEmail":"Cet email est n'est pas valide",
+        "phoneError":"Ce numéro est n'est pas valide",
+        "lastname":"Nom",
+        "email":"email",
+        "city":"Cité",
+        "country":"Pays",
+        "phone":"Téléphone",
+        "birthday":"Naissance",
+        "description":"Description"
     }
    
 }

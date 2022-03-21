@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged, take } from 'rxjs/operators';
-import { User } from 'src/app/models/user.model';
+import { UserHomeInfo } from 'src/app/models/userHomeInfo.model';
 import { OutPutService } from 'src/app/services/divers/out-put.service';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { UserService } from 'src/app/services/userServices/user.service';
@@ -18,7 +18,7 @@ import { saveAs } from 'file-saver';
 export class DescriptionComponent implements OnInit, OnDestroy {
   subscriptions:Subscription[] = [];
   isAdmin:boolean = true;
-  user : User;
+  user : UserHomeInfo;
   defaultLang:string;
  
 
@@ -27,7 +27,7 @@ export class DescriptionComponent implements OnInit, OnDestroy {
               private modalService: NgbModal,
               private userService: UserService) {
     
-                this.user = new User();
+                this.user = new UserHomeInfo();
                 this.defaultLang = this.languageService.userLanguage;
 
                  this.subscriptions.push(this.languageService.langChenged

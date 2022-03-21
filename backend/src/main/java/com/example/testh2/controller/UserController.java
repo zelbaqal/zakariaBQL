@@ -2,6 +2,7 @@ package com.example.testh2.controller;
 
 import com.example.testh2.dto.ResponseInformations;
 import com.example.testh2.dto.UserInformationsDto;
+import com.example.testh2.entity.User;
 import com.example.testh2.services.GeneralInfoService;
 import com.example.testh2.services.UserService;
 import lombok.AllArgsConstructor;
@@ -31,13 +32,29 @@ public class UserController {
     }
 
     @PatchMapping
-    public ResponseEntity<UserInformationsDto> updateUserInfo(
+    public ResponseEntity<UserInformationsDto> updateUserHomeInfo(
             @RequestPart("userInfo") UserInformationsDto userInfo,
             @RequestPart(value = "cvFileFR", required = false)MultipartFile cvFileFR,
             @RequestPart(value = "cvFileEN", required = false)MultipartFile cvFileEN
         ){
-        return ResponseEntity.ok().body(userService.updateUserInformation(userInfo, cvFileFR, cvFileEN));
+        return ResponseEntity.ok().body(userService.updateUserHomeInformation(userInfo, cvFileFR, cvFileEN));
     }
+
+    @PatchMapping("/user")
+    public ResponseEntity<String> updateUserEditInfo(
+            @RequestPart("userInfo") User userInfo,
+            @RequestPart(value = "userImage", required = false)MultipartFile userImage
+    ){
+        return ResponseEntity.ok().body(userService.updateUserEditInformation(userInfo, userImage));
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<User> getUser(
+            @PathVariable("id") Long id
+    ){
+        return ResponseEntity.ok().body(userService.getUserById(id));
+    }
+
 
     @GetMapping("/{pdfName}")
     public ResponseEntity<Resource> loadPdfFile(@PathVariable String pdfName) throws IOException {

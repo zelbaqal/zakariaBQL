@@ -2,7 +2,9 @@ package com.example.testh2;
 
 import com.example.testh2.dao.ColaboratorRepos;
 import com.example.testh2.dao.UserInformationsRepo;
+import com.example.testh2.dao.UserRepos;
 import com.example.testh2.entity.Colaborator;
+import com.example.testh2.entity.User;
 import com.example.testh2.entity.UserInformations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,12 +17,17 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 @EnableWebMvc
 public class TestH2Application implements CommandLineRunner {
 
     @Autowired
     private UserInformationsRepo userInformationsRepo;
+    @Autowired
+    private UserRepos userRepos;
     @Autowired
     private ColaboratorRepos colaboratorRepos;
 
@@ -42,8 +49,33 @@ public class TestH2Application implements CommandLineRunner {
         user.setResumeNameEn("resumeEn.pdf");
         user.setResumeNameFr("resumeFr.pdf");
 
+
+
+
         userInformationsRepo.save(user);
 
+
+        User userEdit = new User();
+
+        userEdit.setFirstname("zakaria");
+        userEdit.setLastname("El baqal");
+
+        userRepos.save(userEdit);
+
+        List<Colaborator> collaborators = new ArrayList<>();
+
+        collaborators.add(Colaborator.builder().tooltip("bootstrap").imageName("colaborator-bootstrap.png").build());
+        collaborators.add(Colaborator.builder().tooltip("jquery").imageName("colaborator-jquery.png").build());
+        collaborators.add(Colaborator.builder().tooltip("javascript").imageName("colaborator-javascript.png").build());
+        collaborators.add(Colaborator.builder().tooltip("css").imageName("colaborator-css.png").build());
+        collaborators.add(Colaborator.builder().tooltip("java").imageName("colaborator-java.png").build());
+        collaborators.add(Colaborator.builder().tooltip("oracle").imageName("colaborator-oracle.png").build());
+        collaborators.add(Colaborator.builder().tooltip("git").imageName("colaborator-git.png").build());
+        collaborators.add(Colaborator.builder().tooltip("angular").imageName("colaborator-angular.png").build());
+        collaborators.add(Colaborator.builder().tooltip("spring").imageName("colaborator-spring.png").build());
+        collaborators.add(Colaborator.builder().tooltip("mysql").imageName("colaborator-mysql.png").build());
+
+        colaboratorRepos.saveAll(collaborators);
 
 
     }

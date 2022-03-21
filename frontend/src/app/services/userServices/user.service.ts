@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user.model';
+import { UserEditInfo } from 'src/app/components/edit-profil/partials/accountDetails/account-details.component';
+import { UserHomeInfo } from 'src/app/models/userHomeInfo.model';
 import { ConstantVariables } from '../ConstantVariables';
 import { LanguageService } from '../language/language.service';
 
@@ -15,22 +16,29 @@ export class UserService {
   
   constructor(private http : HttpClient, private langageService : LanguageService) { }
 
-   getGlobalInfoUser(userId: number): Observable<User> {
+   getGlobalInfoUser(userId: number): Observable<UserHomeInfo> {
     return this.http.get<any>(this.URL,{ params:{id : userId.toString()}})
   }
 
-  getUserInfo():Observable<User> {
+  getUserInfo():Observable<UserHomeInfo> {
     // const userLang = this.langageService.userLanguage;
-    return this.http.get<User>(this.URL);
+    return this.http.get<UserHomeInfo>(this.URL);
   }
 
-  updateUserInformation(formData:FormData):Observable<User>{
-    return this.http.patch<User>(`${this.URL}`, formData);
+  updateUserHomeInformation(formData:FormData):Observable<UserHomeInfo>{
+    return this.http.patch<UserHomeInfo>(`${this.URL}`, formData);
   }
 
    getCvFile(userId:number): Observable<Blob> {
-     const cvName = userId + "-" + this.langageService.userLanguage;
+     const cvName = `cv-${userId}-${this.langageService.userLanguage}`;
      return this.http.get(`${this.URL}${cvName}`,{responseType : 'blob'});
+  }
+
+  updateUserProfilInformation(formData:FormData):Observable<any>{
+    return this.http.patch(`${this.URL}user`, formData, { responseType : 'text'});
+  }
+  getUserToEdit(id:number):Observable<any>{
+    return this.http.get(`${this.URL}user/${id}`);
   }
  
 }

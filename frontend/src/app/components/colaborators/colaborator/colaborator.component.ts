@@ -12,7 +12,7 @@ import { ConstantVariables } from 'src/app/services/ConstantVariables';
 export class ColaboratorComponent implements OnInit{
 
   
-  @Input() icon : string;
+  @Input() icon : any;
   url : string;
   filename : string;
   extentionRemover : ExtentionRemover = new ExtentionRemover();
@@ -22,8 +22,9 @@ export class ColaboratorComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.filename = this.extentionRemover.transform(this.icon);
-    this.url = `${ConstantVariables.DOMAIN}/api/colaborators/${this.icon}`;
+    //this.filename = this.extentionRemover.transform(this.icon);
+    this.filename = this.icon.tooltip;
+    this.url = `${ConstantVariables.DOMAIN}/api/colaborators/${this.icon.imageName}`;
   }
 
  

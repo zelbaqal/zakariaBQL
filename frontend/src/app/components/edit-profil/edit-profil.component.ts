@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { ColDef, ColumnApi, GridApi, ICellRendererParams } from 'ag-grid-community';
-import { LanguageService } from 'src/app/services/language/language.service';
-import { EditBtnComponents } from './edit-btns.component';
-import { ImgComponent } from './img-component';
+import { UserService } from 'src/app/services/userServices/user.service';
+import { UserEditInfo } from './partials/accountDetails/account-details.component';
 
 @Component({
   selector: 'app-edit-profil',
@@ -12,55 +9,37 @@ import { ImgComponent } from './img-component';
 })
 export class EditProfilComponent implements OnInit {
 
-  private gridApi: GridApi;
+  image:File;
+ 
 
-  columnDefs: ColDef[] = [
-    { 
-      headerValueGetter: this.localizeHeader.bind(this),
-      field: 'logo',
-      width : 100,
-      cellRenderer: ImgComponent
-     },
-     { 
-      headerValueGetter: this.localizeHeader.bind(this),
-      field: 'name',
-      width : 120
-     },
-     { 
-      headerValueGetter: this.localizeHeader.bind(this),
-      field: 'action',
-      width : 120,
-      headerClass :"acion-style",
-      cellRenderer : EditBtnComponents
-     }]
-
-     public defaultColDef: ColDef = {
-      resizable: false,
-    };
-
-
-rowData = [
-    {  name: 'Celica' },
-    {  name: 'Mondeo'},
-    {  name: 'Boxter'}
-];
-
-  constructor(private translateService : TranslateService) {
-    this.translateService.onLangChange.subscribe(() => {
-      this.gridApi.refreshHeader();
-    })
+  constructor(private userService : UserService) {
+    
    }
 
   ngOnInit(): void {
+    
   }
 
-  public onGridReady(parameters: any): void {
-    this.gridApi = parameters.api;
+  onImageSelected(image:File){
+    this.image = image;
   }
 
-  public localizeHeader(parameters:any): string {
-    let headerIdentifier = parameters.colDef.field;
-    return this.translateService.instant("AGGRID."+headerIdentifier);
+  onSubmitForm(user:UserEditInfo){
+   
+    //Create a form data
+    const formData = new FormData();
+          formData.append("userInfo", new Blob([JSON.stringify(user)],{type:"application/json"})); 
+          if(this.image?.size){
+            formData.append('userImage', this.image);
+          }
+    //Call service to send new data to backend
+    this.userService.updateUserProfilInformation(formData).subscribe(response =>{
+      //redirect
+      //notifacation for success
+      console.log(response);
+    });
   }
+
+
 
 }

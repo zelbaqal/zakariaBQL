@@ -9,6 +9,7 @@ const routes: Routes = [
   
   { path : "home", component : IntroComponent},
   { path : "about", loadChildren: ()=> import('./components/about-me/about-me.module').then(mod => mod.AboutMeModule)},
+  { path : "edit-profil", loadChildren: ()=> import('./components/edit-profil/edit-profil.module').then(mod => mod.EditProfilModule)},
   { path : "experience", component : GlobalExperienceComponent},
 
    { path : "**", redirectTo : "home"},

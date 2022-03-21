@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -19,6 +19,7 @@ import { FileDragerComponent } from './components/modals/file-drager/file-drager
 import { CardModalComponent } from './components/modals/card-modal/card-modal.component';
 import { ClickStopPropagation } from './directives/stopClickPropagation';
 import { EditProfilComponent } from './components/edit-profil/edit-profil.component';
+import { NetworkInterceptor } from './interceptors/network.interceptor';
 
 
 
@@ -69,7 +70,13 @@ export function createTranslateLoader(httpClient : HttpClient){
 
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NetworkInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

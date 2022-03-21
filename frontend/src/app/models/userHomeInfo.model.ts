@@ -4,7 +4,7 @@ export interface Deserializable {
   deserialize(input: any): this;
 }
 
-export class User implements Deserializable {
+export class UserHomeInfo implements Deserializable {
 
   userId:number;
   salutation: FielldsLanguage;
