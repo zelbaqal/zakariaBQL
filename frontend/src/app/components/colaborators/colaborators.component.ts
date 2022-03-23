@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExtentionRemover } from 'src/app/pipes/extention-remover';
-import { ColaboratorsService } from 'src/app/services/colaborators/colaborators.service';
+import { PublicResourcesService } from 'src/app/services/public-resources/public-resources.srvice';
 
 @Component({
   selector: 'colaborators',
@@ -9,13 +8,13 @@ import { ColaboratorsService } from 'src/app/services/colaborators/colaborators.
 })
 export class ColaboratorsComponent implements OnInit {
 
-  colaborators = ['oracle.png','git.png','java.png','css.png','javascript.png','jquery.png','angular.png','bootstrap.png','spring.png','mysql.png']
+  colaborators = []
                   
 
-  constructor(private colaboratorService : ColaboratorsService) { }
+  constructor(private publicService : PublicResourcesService) { }
 
   ngOnInit(): void {
-    this.colaboratorService.getColaboratorsImages().subscribe(colaborators => {
+    this.publicService.getColaboratorsImages().subscribe(colaborators => {
       this.colaborators = colaborators;
     })
   }

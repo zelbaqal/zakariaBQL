@@ -8,6 +8,8 @@ import { LanguageService } from 'src/app/services/language/language.service';
 import { UserService } from 'src/app/services/userServices/user.service';
 import { InfoModalComponent } from '../../modals/info-modal/info-modal.component';
 import { saveAs } from 'file-saver';
+import { TokenStorageService } from 'src/app/services/token-storage/tokenStorage.service';
+import { PublicResourcesService } from 'src/app/services/public-resources/public-resources.srvice';
 
 
 @Component({
@@ -17,7 +19,7 @@ import { saveAs } from 'file-saver';
 })
 export class DescriptionComponent implements OnInit, OnDestroy {
   subscriptions:Subscription[] = [];
-  isAdmin:boolean = true;
+  isAdmin:boolean;
   user : UserHomeInfo;
   defaultLang:string;
  
@@ -25,7 +27,9 @@ export class DescriptionComponent implements OnInit, OnDestroy {
   constructor(private languageService : LanguageService,
               private outputservice : OutPutService,
               private modalService: NgbModal,
-              private userService: UserService) {
+              private userService: UserService,
+              private publicService : PublicResourcesService,
+              private tokenStorage : TokenStorageService) {
     
                 this.user = new UserHomeInfo();
                 this.defaultLang = this.languageService.userLanguage;
@@ -48,14 +52,18 @@ export class DescriptionComponent implements OnInit, OnDestroy {
 
   
   ngOnInit(): void {
-    this.userService.getUserInfo().subscribe(user => this.user = user);
+    this.publicService.getGlobalInfoUser().subscribe(user => {
+      this.user = user
+    });
+    const index = this.tokenStorage.getUser().roles.indexOf("ROLE_ADMIN");
+     this.isAdmin = index != -1 ? true : false;
   }
 
 
   openInfoModal() {
     const config: NgbModalOptions = { size : 'xl',}; 
     this.outputservice.modalRef = this.modalService.open(InfoModalComponent, config);
-    this.outputservice.modalRef.componentInstance.userId = this.user.userId;  
+    this.outputservice.modalRef.componentInstance.user = this.user;  
     this.outputservice.submitEvent.subscribe(user => {
        this.user = user;
        this.outputservice.closeModal(); 
@@ -64,7 +72,7 @@ export class DescriptionComponent implements OnInit, OnDestroy {
 
   downloadMyCV(){
     const fileName = "CV-"+ this.languageService.userLanguage.toUpperCase();
-    this.userService.getCvFile(this.user.userId).subscribe(blob => saveAs(blob, fileName));
+    this.publicService.getCvFile(this.user.userId).subscribe(blob => saveAs(blob, fileName));
   }
   
 }

@@ -1,7 +1,7 @@
-import { DatePipe } from "@angular/common";
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { LoadingService } from "src/app/services/divers/loader.service";
+import { PublicResourcesService } from "src/app/services/public-resources/public-resources.srvice";
 import { UserService } from "src/app/services/userServices/user.service";
 
 
@@ -9,16 +9,17 @@ import { UserService } from "src/app/services/userServices/user.service";
 
 export class UserEditInfo{
     constructor(
-        public userId:number,
-        public firstname:string, 
-        public lastname:string,
-        public email:string,
-        public city:string,
-        public country:string,
-        public phone:string,
-        public birthday:Date,
-        public descriptionFr:string,
-        public descriptionEn:string ){}
+        public userId?:number,
+        public firstname?:string, 
+        public lastname?:string,
+        public email?:string,
+        public password?: string,
+        public city?:string,
+        public country?:string,
+        public phone?:string,
+        public birthday?:Date,
+        public descriptionFr?:string,
+        public descriptionEn?:string ){}
 }
 
 @Component({
@@ -31,12 +32,13 @@ export class UserEditInfo{
     
     @Output() submitFormEvent = new EventEmitter<UserEditInfo>();
   
-    user : UserEditInfo = new UserEditInfo(1,'cc','cc','cc','cc','cc','cc',new Date(),'cc','cc');
+    user : UserEditInfo = new UserEditInfo();
 
     userInfoForm: FormGroup; 
     firstname = new FormControl(this.user.firstname, [Validators.required, Validators.minLength(4), Validators.maxLength(30)]);
     lastname = new FormControl(this.user.lastname, [Validators.required,  Validators.minLength(4), Validators.maxLength(30)]);
     email = new FormControl(this.user.email, [Validators.required, Validators.email]);
+    password = new FormControl(this.user.password, [Validators.required, Validators.minLength(4), Validators.maxLength(8)]);
     city = new FormControl(this.user.city, [Validators.required, Validators.minLength(4), Validators.maxLength(30)]);
     country = new FormControl(this.user.country, [Validators.required,  Validators.minLength(4), Validators.maxLength(30)]);
     phone = new FormControl(this.user.phone, [Validators.required, Validators.pattern("[06][0-9]{9}")]);
@@ -46,7 +48,10 @@ export class UserEditInfo{
     
     loading$ = this.loader.loading$;
     
-    constructor(public loader: LoadingService, private fb : FormBuilder, private userService : UserService) {
+    constructor(public loader: LoadingService, 
+                private fb : FormBuilder,
+                private publicService : PublicResourcesService, 
+                private userService : UserService) {
    
      }
 
@@ -64,7 +69,8 @@ export class UserEditInfo{
       })
 
       //get UserInfo
-      this.userService.getUserToEdit(1).subscribe(user => {
+      this.publicService.getUserToEdit().subscribe(user => {
+        this.user = user;
         //set user info in the form
         this.setUserObjectToForm(user, this.userInfoForm);
       })
@@ -95,8 +101,8 @@ export class UserEditInfo{
       });
      }
 
-     private formatDate(date:Date) {
-      const d = new Date(date);
+     private formatDate(date?:Date) {
+      const d = new Date(date || '');
       let month = '' + (d.getMonth() + 1);
       let day = '' + d.getDate();
       const year = d.getFullYear();

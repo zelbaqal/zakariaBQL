@@ -24,7 +24,7 @@ export class ColaboratorComponent implements OnInit{
   ngOnInit(): void {
     //this.filename = this.extentionRemover.transform(this.icon);
     this.filename = this.icon.tooltip;
-    this.url = `${ConstantVariables.DOMAIN}/api/colaborators/${this.icon.imageName}`;
+    this.url = `${ConstantVariables.DOMAIN}/api/public/colaborators/${this.icon.imageName}`;
   }
 
  

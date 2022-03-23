@@ -51,7 +51,8 @@
         "country":"Pays",
         "phone":"Téléphone",
         "birthday":"Naissance",
-        "description":"Description"
+        "description":"Description",
+        "fullname":"Nom complet"
     }
    
 }

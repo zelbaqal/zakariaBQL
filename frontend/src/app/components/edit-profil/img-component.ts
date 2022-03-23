@@ -13,10 +13,10 @@ import { ConstantVariables } from "src/app/services/ConstantVariables";
      
     constructor() { }
     refresh(params: ICellRendererParams): boolean {
-        this.imgUrl = `${ConstantVariables.DOMAIN}/api/colaborators/${params.value}`
+        this.imgUrl = `${ConstantVariables.DOMAIN}/api/public/colaborators/${params.value}`
         return true;
     }
     agInit(params: ICellRendererParams): void {
-      this.imgUrl = `${ConstantVariables.DOMAIN}/api/colaborators/${params.value}`
+      this.imgUrl = `${ConstantVariables.DOMAIN}/api/public/colaborators/${params.value}`
     }
   }

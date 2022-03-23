@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { ConstantVariables } from "src/app/services/ConstantVariables";
+import { PublicResourcesService } from "src/app/services/public-resources/public-resources.srvice";
 import { UserService } from "src/app/services/userServices/user.service";
 
 
@@ -21,17 +22,17 @@ import { UserService } from "src/app/services/userServices/user.service";
   })
   export class ImageLoaderComponent implements OnInit {
   
-    imageSrc: any = `${ConstantVariables.DOMAIN}/api/colaborators/avatar.png`;;
+    imageSrc: any = `${ConstantVariables.DOMAIN}/api/public/colaborators/avatar.png`;;
    
     @Output() validImageProfil = new EventEmitter<File>();
 
-    constructor(private userService : UserService) { }
+    constructor(private userService : UserService, private publicService : PublicResourcesService) { }
 
     ngOnInit(): void {
 
-      this.userService.getUserToEdit(1).subscribe(user=>{
+      this.publicService.getUserToEdit().subscribe(user=>{
         if(user.imageName){
-          this.imageSrc = `${ConstantVariables.DOMAIN}/api/colaborators/${user.imageName}`;
+          this.imageSrc = `${ConstantVariables.DOMAIN}/api/public/colaborators/${user.imageName}`;
         }
       })
         

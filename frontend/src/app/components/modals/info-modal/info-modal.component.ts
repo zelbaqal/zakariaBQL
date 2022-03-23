@@ -13,7 +13,7 @@ import { InputConfig, InputType } from '../input-modal/input-modal.component';
   templateUrl: './info-modal.component.html',
   styleUrls: ['./info-modal.component.css']
 })
-export class InfoModalComponent implements OnInit, OnDestroy{
+export class InfoModalComponent implements OnInit{
 
   inputsConfig : InputConfig[] = [
     {
@@ -43,8 +43,7 @@ export class InfoModalComponent implements OnInit, OnDestroy{
 ]
 
   subscriptions : Subscription[] = []
-  @Input() public userId:number;
-  user : UserHomeInfo;
+  @Input() user:UserHomeInfo;
   myForm: FormGroup;
   public filesFR: NgxFileDropEntry[] = [];
   public filesEN: NgxFileDropEntry[] = [];
@@ -66,21 +65,15 @@ export class InfoModalComponent implements OnInit, OnDestroy{
 
 
   ngOnInit(): void {
-    this.subscriptions.push(
-          this.userService.getGlobalInfoUser(this.userId).subscribe(user =>{
-              this.myForm.controls.userId.setValue(user.userId);
-              this.myForm.controls.salutation.setValue(user.salutation);
-              this.myForm.controls.presentation.setValue(user.presentation);
-              this.myForm.controls.jobDescription.setValue(user.jobDescription);
-              this.myForm.controls.resumeNameFr.setValue(user.resumeNameFr);
-              this.myForm.controls.resumeNameEn.setValue(user.resumeNameEn);
-              this.user = user;
-    }));        
+    this.myForm.controls.userId.setValue(this.user.userId);
+              this.myForm.controls.salutation.setValue(this.user.salutation);
+              this.myForm.controls.presentation.setValue(this.user.presentation);
+              this.myForm.controls.jobDescription.setValue(this.user.jobDescription);
+              this.myForm.controls.resumeNameFr.setValue(this.user.resumeNameFr);
+              this.myForm.controls.resumeNameEn.setValue(this.user.resumeNameEn);       
     }
 
-    ngOnDestroy(): void {
-      this.subscriptions.forEach(sub => sub.unsubscribe());
-    }
+    
 
     
     clearResumeField(input :string){

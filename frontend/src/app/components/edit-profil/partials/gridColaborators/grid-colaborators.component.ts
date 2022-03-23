@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { ColDef, GridApi } from "ag-grid-community";
-import { ColaboratorsService } from "src/app/services/colaborators/colaborators.service";
+import { PublicResourcesService } from "src/app/services/public-resources/public-resources.srvice";
 import { ImgComponent } from "../../img-component";
 import { EditBtnComponents } from "./edit-btns.component";
 
@@ -58,7 +58,7 @@ import { EditBtnComponents } from "./edit-btns.component";
 
 rowData = [];
 
-  constructor(private translateService : TranslateService, private colaboratorService : ColaboratorsService) {
+  constructor(private translateService : TranslateService, private publicService : PublicResourcesService) {
     //To refactor
     this.translateService.onLangChange.subscribe(() => {
       this.gridApi.refreshHeader();
@@ -68,8 +68,7 @@ rowData = [];
    }
 
   ngOnInit(): void {
-    this.colaboratorService.getColaboratorsImages().subscribe(data => {
-      console.log(data);
+    this.publicService.getColaboratorsImages().subscribe(data => {
       this.rowData = data
     })
   }

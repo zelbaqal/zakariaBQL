@@ -12,33 +12,19 @@ import { LanguageService } from '../language/language.service';
 })
 export class UserService {
   
-  URL:string = `${ConstantVariables.DOMAIN}/api/userInfo/`;
+  URL:string = `${ConstantVariables.DOMAIN}/api/userInfo`;
   
-  constructor(private http : HttpClient, private langageService : LanguageService) { }
+  constructor(private http : HttpClient) { }
 
-   getGlobalInfoUser(userId: number): Observable<UserHomeInfo> {
-    return this.http.get<any>(this.URL,{ params:{id : userId.toString()}})
-  }
-
-  getUserInfo():Observable<UserHomeInfo> {
-    // const userLang = this.langageService.userLanguage;
-    return this.http.get<UserHomeInfo>(this.URL);
-  }
-
+  
   updateUserHomeInformation(formData:FormData):Observable<UserHomeInfo>{
     return this.http.patch<UserHomeInfo>(`${this.URL}`, formData);
   }
 
-   getCvFile(userId:number): Observable<Blob> {
-     const cvName = `cv-${userId}-${this.langageService.userLanguage}`;
-     return this.http.get(`${this.URL}${cvName}`,{responseType : 'blob'});
-  }
 
   updateUserProfilInformation(formData:FormData):Observable<any>{
-    return this.http.patch(`${this.URL}user`, formData, { responseType : 'text'});
+    return this.http.patch(`${this.URL}/user`, formData, { responseType : 'text'});
   }
-  getUserToEdit(id:number):Observable<any>{
-    return this.http.get(`${this.URL}user/${id}`);
-  }
+
  
 }

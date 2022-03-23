@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgbDatepickerModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Default$Langue } from 'src/app/pipes/default-lang';
 import { ColaboratorsComponent } from '../colaborators/colaborators.component';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
 
@@ -28,7 +29,7 @@ import { ColaboratorsComponent } from '../colaborators/colaborators.component';
     TranslateModule,
     NgbModule,
     NgbModalModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
   ]
 })
 export class IntroModule { }

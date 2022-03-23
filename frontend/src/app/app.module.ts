@@ -7,7 +7,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { PropertyExtractorPipe } from './pipes/property-extractor.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IntroModule } from './components/intro/intro.module';
 import { ExperienceModule } from './components/experience/experience.module';
@@ -18,8 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileDragerComponent } from './components/modals/file-drager/file-drager.component';
 import { CardModalComponent } from './components/modals/card-modal/card-modal.component';
 import { ClickStopPropagation } from './directives/stopClickPropagation';
-import { EditProfilComponent } from './components/edit-profil/edit-profil.component';
-import { NetworkInterceptor } from './interceptors/network.interceptor';
+import { NetworkInterceptor } from './services/interceptors/network.interceptor';
+import { LoginComponent } from './components/login/login.component';
+import { PropertyExtractorPipe } from './pipes/property-extractor.pipe';
 
 
 
@@ -37,17 +37,13 @@ export function createTranslateLoader(httpClient : HttpClient){
   declarations: [
     AppComponent,
     HeaderComponent,
-    PropertyExtractorPipe,
     ClickStopPropagation,
     InfoModalComponent,
     InputModalComponent,
     FileDragerComponent,
     CardModalComponent,
-    
-    
-   
-    
-  
+    LoginComponent,
+    PropertyExtractorPipe
   ],
   imports: [
     BrowserModule,
@@ -67,7 +63,6 @@ export function createTranslateLoader(httpClient : HttpClient){
     ExperienceModule,
     NgxFileDropModule,
     
-
 
   ],
   providers: [

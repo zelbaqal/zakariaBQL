@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { UserEditInfo } from '../../edit-profil/partials/accountDetails/account-details.component';
 
 @Component({
   selector: 'info-profil',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoProfilComponent implements OnInit {
 
-  constructor() { }
+  @Input() user:UserEditInfo;
+  @Input() title:string;
+
+  constructor() { 
+  }
 
   ngOnInit(): void {
+  
   }
 
 }
