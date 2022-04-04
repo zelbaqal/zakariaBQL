@@ -46,7 +46,7 @@
         "errorEmail":"This mail is not a valid mail",
         "phoneError":"This phone number is not a valid number phone",
         "lastname":"Lastname",
-        "email":"email",
+        "email":"Email",
         "city":"City name",
         "country":"Country name",
         "phone":"Phone number",

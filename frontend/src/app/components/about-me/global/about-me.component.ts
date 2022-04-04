@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ConstantVariables } from 'src/app/services/ConstantVariables';
+import { LanguageService } from 'src/app/services/language/language.service';
 import { PublicResourcesService } from 'src/app/services/public-resources/public-resources.srvice';
 import { UserEditInfo } from '../../edit-profil/partials/accountDetails/account-details.component';
 
@@ -11,18 +15,41 @@ import { UserEditInfo } from '../../edit-profil/partials/accountDetails/account-
 })
 export class AboutMeComponent implements OnInit {
 
-  para:string = "Développeur full stack Java/Jee - Javascript et certifié Scrum, avec un an d’expérience. Polyvalent, je maîtrise les frameworks Spring et Angular et aussi les différentes étapes techniques de la création d’un site ou d’une application web, de la compréhension des besoins utilisateurs, au développement frontend et backend en passant par la maintenance."
 
   user : UserEditInfo;
+  fullname:string;
+  description:any;
+  imageUrl : string = `${ConstantVariables.DOMAIN}/api/public/colaborators/`;
+  
 
-  constructor(private publicService : PublicResourcesService) { 
-    
+  constructor(private publicService : PublicResourcesService, private translateService : TranslateService) { 
     
   }
 
   ngOnInit(): void {  
+
+    let descriptionByLang = `description${this.capitalize(this.translateService.currentLang)}`;
+
+    this.publicService.getUserToEdit().subscribe(user => {
+      this.user = user;
+      this.fullname = user.firstname + ' ' + user.lastname;
+      this.description = user[descriptionByLang as keyof UserEditInfo];
+      this.imageUrl += user.imageName;
+    });
+
+    this.translateService.onLangChange.subscribe(()=>{
+      descriptionByLang = `description${this.capitalize(this.translateService.currentLang)}`;
+      this.description = this.user[descriptionByLang as keyof UserEditInfo];
+    });
+
     
-    this.publicService.getUserToEdit().subscribe(user => this.user = user);
+
+    
+    
+  }
+
+  capitalize(word:string):string {
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
   }
 
 }

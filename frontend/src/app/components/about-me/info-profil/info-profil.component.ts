@@ -6,16 +6,15 @@ import { UserEditInfo } from '../../edit-profil/partials/accountDetails/account-
   templateUrl: './info-profil.component.html',
   styleUrls: ['./info-profil.component.css']
 })
-export class InfoProfilComponent implements OnInit {
+export class InfoProfilComponent {
 
-  @Input() user:UserEditInfo;
+  @Input() value:any;
   @Input() title:string;
+  @Input() displayIn:string = 'capital';
 
   constructor() { 
   }
 
-  ngOnInit(): void {
-  
-  }
+ 
 
 }

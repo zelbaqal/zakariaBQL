@@ -8,6 +8,8 @@ import { ProgressBarComponent } from "./progress-bar/progress-bar.component";
 import { CompetenceComponent } from './competence/competence.component';
 import { AboutMeRoutingModule } from "./about-me.routing";
 import { TranslateModule } from "@ngx-translate/core";
+import { PipesModule } from "src/app/pipes/pipes.module";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { TranslateModule } from "@ngx-translate/core";
     CommonModule,
     TranslateModule,
     AboutMeRoutingModule,
-    
+    PipesModule,
+    FormsModule
   ]
 })
 export class AboutMeModule { }

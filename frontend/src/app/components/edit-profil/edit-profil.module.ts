@@ -28,7 +28,8 @@ import { EditProfilRoutingModule } from './edit-profil.routing';
     TranslateModule,
     ReactiveFormsModule,
     FormsModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+ 
   ]
 })
 export class EditProfilModule { }

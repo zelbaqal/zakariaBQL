@@ -2,6 +2,7 @@ package com.example.testh2.controller;
 
 import com.example.testh2.dto.ResponseInformations;
 import com.example.testh2.dto.UserInformationsDto;
+import com.example.testh2.entity.Link;
 import com.example.testh2.entity.User;
 import com.example.testh2.security.services.UserDetailsImp;
 import com.example.testh2.services.GeneralInfoService;
@@ -48,6 +49,13 @@ public class UserController {
             @RequestPart(value = "userImage", required = false)MultipartFile userImage
     ){
         return ResponseEntity.ok().body(userService.updateUserEditInformation(userInfo, userImage));
+    }
+
+    @PatchMapping("/links")
+    public ResponseEntity<Link> updateLinkInfo(
+            @RequestPart("link")Link link,
+            @RequestPart(value = "linkImage", required = false)MultipartFile linkImage){
+        return ResponseEntity.ok().body(userService.updateLinkInfo(link, linkImage));
     }
 
 

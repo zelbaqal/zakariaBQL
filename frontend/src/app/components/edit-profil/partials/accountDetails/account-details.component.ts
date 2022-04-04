@@ -12,6 +12,7 @@ export class UserEditInfo{
         public userId?:number,
         public firstname?:string, 
         public lastname?:string,
+        public imageName?:string,
         public email?:string,
         public password?: string,
         public city?:string,
@@ -19,7 +20,11 @@ export class UserEditInfo{
         public phone?:string,
         public birthday?:Date,
         public descriptionFr?:string,
-        public descriptionEn?:string ){}
+        public descriptionEn?:string,
+        public links?:[] ,
+        public roles?:string[]){}
+
+       
 }
 
 @Component({

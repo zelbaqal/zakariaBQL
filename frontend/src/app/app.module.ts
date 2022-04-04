@@ -20,6 +20,7 @@ import { ClickStopPropagation } from './directives/stopClickPropagation';
 import { NetworkInterceptor } from './services/interceptors/network.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { PropertyExtractorPipe } from './pipes/property-extractor.pipe';
+import { PipesModule } from './pipes/pipes.module';
 
 
 
@@ -43,7 +44,7 @@ export function createTranslateLoader(httpClient : HttpClient){
     FileDragerComponent,
     CardModalComponent,
     LoginComponent,
-    PropertyExtractorPipe
+    
   ],
   imports: [
     BrowserModule,
@@ -62,7 +63,7 @@ export function createTranslateLoader(httpClient : HttpClient){
     IntroModule,
     ExperienceModule,
     NgxFileDropModule,
-    
+    PipesModule
 
   ],
   providers: [

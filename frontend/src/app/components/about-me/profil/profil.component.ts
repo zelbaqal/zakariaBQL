@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ConstantVariables } from 'src/app/services/ConstantVariables';
 
 @Component({
   selector: 'profil',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
+  @Input() fullname : string;
+  @Input() function : string;
+  @Input() city : any;
+  @Input() country : any;
+  @Input() imageName : any;
+
+
   constructor() { }
 
   ngOnInit(): void {
+  
   }
 
 }

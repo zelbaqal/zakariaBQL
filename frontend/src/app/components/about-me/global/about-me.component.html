@@ -10,11 +10,15 @@
 
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-                <profil></profil>
-                <div class="card mt-3 d-none d-md-block">
+                <profil
+                    [imageName] = "imageUrl"
+                    [fullname]="fullname"
+                    [function]="'Full stuck developper'"
+                    [city]="user?.city"
+                    [country]="user?.country"></profil>
+                <div class="card mt-3 ">
                     <ul class="list-group list-group-flush">
-                        <links></links>
-                        <links></links>
+                        <links *ngFor="let link of user?.links" [link]="link"></links>
                     </ul>
                 </div>
             </div>
@@ -22,12 +26,14 @@
                 <div class="card  mb-3">
                     <div class="card-body text-justify">
                         <!-- <p>{{ para | paragrapheLength }}</p> -->
-                        <p>{{ para }}</p>
+                        <p>{{ description }}</p>
                     </div>
                 </div>
-                <div class="card mb-3">
+                <div *ngIf="user" class="card mb-3">
                     <div class="card-body">
-                        <info-profil [title]="'fullname'" [user]="user"></info-profil>
+                        <info-profil [title]="'fullname'" [value]="fullname"></info-profil>
+                        <info-profil [displayIn]="'small'" [title]="'email'" [value]="user.email"></info-profil>
+                        <info-profil [title]="'phone'" [value]="user.phone"></info-profil>
                     </div>
                 </div>
 

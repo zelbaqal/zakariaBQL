@@ -1,8 +1,10 @@
 package com.example.testh2.services;
 
+import com.example.testh2.dao.LinkRepos;
 import com.example.testh2.dao.UserInformationsRepo;
 import com.example.testh2.dao.UserRepos;
 import com.example.testh2.dto.UserInformationsDto;
+import com.example.testh2.entity.Link;
 import com.example.testh2.entity.User;
 import com.example.testh2.entity.UserInformations;
 import com.example.testh2.mappers.UserInformatiionsMpapper;
@@ -43,6 +45,7 @@ public class UserService {
     private final UserInformationsRepo userInformationsRepo;
     private final UserRepos userRepos;
     private final UserInformatiionsMpapper userInformationsMpapper;
+    private final LinkRepos linkRepos;
 
     @Autowired
     @Qualifier("saveFolder")
@@ -89,6 +92,19 @@ public class UserService {
         return "user updated successufuly";
     }
 
+    public Link updateLinkInfo(Link upddatedLink, MultipartFile linkImage) {
+        Link link = linkRepos.findByLinkId(upddatedLink.getLinkId()).orElseThrow(()-> new EntityNotFoundException("Not found"));
+        if(linkImage != null){
+            String extention = StringUtils.getFilenameExtension(linkImage.getOriginalFilename());
+            fileStorageService.save(linkImage,"link-"+link.getLinkId(), extention);
+            link.setLinkImageName("link-"+link.getLinkId()+"."+ extention);
+        }
+        link.setLinkDescription(upddatedLink.getLinkDescription());
+        link.setLinkUrl(upddatedLink.getLinkUrl());
+        linkRepos.save(link);
+        return link;
+    }
+
 
 
     private byte[] byteExtractor(MultipartFile file){
@@ -107,6 +123,8 @@ public class UserService {
     public User getUserById(Long id) {
         return userRepos.findById(id).get();
     }
+
+
 
 
 //    public void saveUserInfoWithFile(MultipartFile fileInfo){
